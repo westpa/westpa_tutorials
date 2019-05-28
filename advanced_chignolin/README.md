@@ -1,5 +1,5 @@
 # Advanced WESTPA tutorial: Folding of the chignolin mini-protein
-This tutorial shows how to obtain the probability fluxes and rate constants of processes from steady-state WESTPA simluations
+This tutorial shows how to obtain the probability fluxes from steady-state WESTPA simluations and how to convert them to rate constants.
 
 ## Tutorial files
 All files necessary for completing the tutorial can be found in this directory.
