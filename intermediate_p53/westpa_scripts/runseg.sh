@@ -19,7 +19,7 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
   ln -sv $WEST_PARENT_DATA_REF ./parent.rst
 fi
 
-mpirun -np 12 pmemd.MPI -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
+pmemd -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
           -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
 COMMAND="         parm $WEST_SIM_ROOT/common_files/P53.MDM2.prmtop\n" 
