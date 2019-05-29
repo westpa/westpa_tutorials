@@ -2,8 +2,8 @@
  &cntrl
 
 !!! INPUT
- irest = 0      ! new simulation, velocities will be assigned
- ntx = 1        ! read in coordinates only
+ irest = 1      ! restarting simulation
+ ntx = 5        ! read in coordinates and velocities
 
 !!! OUTPUT
  ntxo = 2       ! restart file format binary
@@ -18,7 +18,6 @@
 
 !!! TEMPERATURE
  ntt = 3        ! constant temperature, Langevin dynamics
- tempi = 275    ! initial temperature T = 275 K
  temp0 = 275    ! reference temperature T = 275 K
  gamma_ln = 5   ! collision frequency = 5/ps
  ig = RAND      ! Langevin thermostat random force
