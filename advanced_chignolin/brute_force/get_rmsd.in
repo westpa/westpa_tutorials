@@ -1,0 +1,4 @@
+trajin md.mdcrd 
+reference reference.pdb 
+rms reference out rmsd.dat @CA
+
