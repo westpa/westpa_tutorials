@@ -26,3 +26,4 @@ pmemd -O  -i md.inp  -p chignolin.prmtop  -c parent.rst  -x seg.mdcrd  -r seg.rs
 cpptraj chignolin.prmtop < $WEST_SIM_ROOT/get_rmsd.in || exit 1
 awk '{print $2}' rmsd.dat | tail -2 > $WEST_PCOORD_RETURN || exit 1
 
+

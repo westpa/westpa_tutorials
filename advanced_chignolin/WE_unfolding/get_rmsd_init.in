@@ -1,0 +1,4 @@
+trajin common_files/chignolin.pdb
+reference common_files/chignolin.pdb
+rms reference out rmsd_init.dat @CA
+
