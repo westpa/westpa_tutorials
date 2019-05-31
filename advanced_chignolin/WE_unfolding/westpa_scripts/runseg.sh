@@ -21,7 +21,7 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
 fi
 
 
-pmemd -O  -i md.inp  -p chignolin.prmtop  -c parent.rst  -x seg.mdcrd  -r seg.rst  -o seg.out  -inf seg.info   || exit 1
+pmemd -O  -i md.in  -p chignolin.prmtop  -c parent.rst  -x seg.mdcrd  -r seg.rst  -o seg.out  -inf seg.info   || exit 1
 
 cpptraj chignolin.prmtop < $WEST_SIM_ROOT/get_rmsd.in || exit 1
 awk '{print $2}' rmsd.dat | tail -2 > $WEST_PCOORD_RETURN || exit 1
