@@ -1,5 +1,5 @@
-trajin parent.rst7
-trajin seg.rst7
-reference reference.pdb
+trajin parent.rst
+trajin seg.rst
+reference chignolin.pdb
 rms reference out rmsd.dat @CA
 
