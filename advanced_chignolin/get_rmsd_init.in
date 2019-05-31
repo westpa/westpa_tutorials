@@ -1,4 +1,0 @@
-trajin chignolin.rst7
-reference reference.pdb
-rms reference out rmsd_init.dat @CA
-
