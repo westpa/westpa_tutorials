@@ -1,4 +1,4 @@
 trajin md.mdcrd 
-reference reference.pdb 
+reference chignolin.pdb 
 rms reference out rmsd.dat @CA
 
