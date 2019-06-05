@@ -13,8 +13,8 @@ import logging
 log = logging.getLogger(__name__)
 log.debug('loading module %r' % __name__)
 
-def dfunc(p, centers):
-    d = np.array([np.linalg.norm((p - c)) for c in centers], dtype=np.float32)
+def eucl_dist(p, centers):
+    d = np.array([np.linalg.norm(np.array(p - c,dtype=float)) for c in centers], dtype=np.float32)
 
     # the above is the Frobenius norm, for RMSD divide by N^1/2, where N is number of atoms
     # (Note that p has length 3*N)
@@ -30,9 +30,9 @@ class System(WESTSystem):
         self.pcoord_len = 11
         self.pcoord_dtype = np.float32
 
-        self.bin_mapper = wexplore.WExploreBinMapper(n_regions=[10,10,10], d_cut=[5, 2.0, 0.8], dfunc=dfunc)
+        self.bin_mapper = wexplore.WExploreBinMapper(n_regions=[10,10,10], d_cut=[5, 2.0, 0.8], dfunc=eucl_dist)
         # The initial center is on the coordinates of one of the basis states.
-        init_struct = np.loadtxt('common_files/18-crown-6-K+.pdb', dtype=str)
+        init_struct = np.loadtxt('18-crown-6-K+.pdb', dtype=str)
         atom_coords = init_struct[5:8]
         atom_coords = atom_coords.astype(float).flatten()
         self.bin_mapper.centers = [atom_coords]
@@ -53,8 +53,7 @@ def pcoord_loader(fieldname, pcoord_return_filename, destobj, single_point):
     natoms = 1
     
     assert fieldname == 'pcoord'
-
-    print("loading ",pcoord_return_filename)
+    
     init_struct = np.loadtxt(pcoord_return_filename, dtype=str)
     # We're pulling in columns 5, 6, and 7 because this is where the X,Y,Z coords are in the pdb.
     try:

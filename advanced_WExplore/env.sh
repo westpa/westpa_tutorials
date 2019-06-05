@@ -1,11 +1,11 @@
 # This file defines where WEST and GROMACS can be found
 # Modify to taste
 
-export SCRATCH=$SCRATCH
-export WEST_ROOT='/mnt/home/alexrd/westpa'
-export GROMACS_ROOT='/opt/software/GROMACS/2018-foss-2018a'
-export WEST_PYTHONPATH='/mnt/home/alexrd/WESTPA-WExplore/westpa_wexplore'
-export WEST_PYTHON='/mnt/research/DicksonLab/programs/anaconda3/envs/WESTPA-WExplore/bin/python'
+export SCRATCH='/Users/alexrd/research/scratch'
+export WEST_ROOT='/Users/alexrd/research/westpa'
+export GROMACS_ROOT='/Users/alexrd/research/gromacs-2018.2/build'
+export WEST_PYTHONPATH='/Users/alexrd/research/WESTPA-WExplore/westpa_wexplore'
+export WEST_PYTHON='/Users/alexrd/anaconda/envs/WESTPA-WExplore/bin/python'
 
 export PATH="$WEST_PYTHONPATH:$PWD:$ANACONDA_ROOT/bin:$WEST_ROOT/bin/:$GROMACS_ROOT/bin/:$PATH"
 export LD_LIBRARY_PATH="$ANACONDA_ROOT/lib:$GROMACS_ROOT/bin:$LD_LIBRARY_PATH"
