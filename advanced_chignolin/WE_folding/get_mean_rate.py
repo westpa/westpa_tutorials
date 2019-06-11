@@ -9,7 +9,7 @@ if len(sys.argv) == 3 :
    window_time = float(sys.argv[2])
    window_frames = int(window_time/tau)
 else :
-   print "\n\nPLEASE, PROVIDE THE WESTPA RESAMPLING TIME, TAU, AND THE WIDTH FOR THE WINDOW-AVERAGING  (BOTH IN SECONDS) AS COMMAND LINE ARGUMENTS, E.G.:\n\n\t'python get_mean_rate.py  20e-12  1e-9'\n\n\n"
+   print "\n\nPLEASE, PROVIDE THE WESTPA RESAMPLING TIME, TAU, AND THE WIDTH FOR THE WINDOW-AVERAGING  (BOTH IN SECONDS) AS COMMAND LINE ARGUMENTS, E.G.:\n\n\t'python get_mean_rate.py  20e-12  20e-9'\n\n\n"
    sys.exit()
 ###################################################################################
 
