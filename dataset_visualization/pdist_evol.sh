@@ -1,7 +1,7 @@
 ### SECTION 1 ###
 
 # Run w_pdist first
-w_pdist west.h5
+w_pdist -W west.h5
 
 # Making a folder for the movie
 if [ ! -e pdist_evol ];then
