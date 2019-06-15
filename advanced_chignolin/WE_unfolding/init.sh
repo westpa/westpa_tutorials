@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# Set up simulation environment
 source env.sh
 
-rm -rf traj_segs seg_logs  west.h5 
-mkdir seg_logs traj_segs 
+# Clean up from previous/ failed runs
+rm -rf traj_segs seg_logs istates west.h5 
+mkdir   seg_logs traj_segs istates
 
-BSTATE_ARGS="--bstate start,1,common_files/chignolin.pdb"
-TSTATE_ARGS="--tstate unfolded,4.02"
+# Set pointer to bstate and tstate
+BSTATE_ARGS="--bstate-file $WEST_SIM_ROOT/bstates/bstates.txt"
+TSTATE_ARGS="--tstate-file $WEST_SIM_ROOT/tstate.file"
 
-$WEST_ROOT/bin/w_init $BSTATE_ARGS $TSTATE_ARGS --segs-per-state 4 "$@"
- 
+# Run w_init
+$WEST_ROOT/bin/w_init \
+  $BSTATE_ARGS \
+  $TSTATE_ARGS \
+  --segs-per-state 4 \
+  --work-manager=threads "$@"

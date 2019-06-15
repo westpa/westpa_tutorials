@@ -2,8 +2,8 @@
  &cntrl
 
 !!! INPUT
- irest = 0      ! new simulation, velocities will be assigned
- ntx = 1        ! read in coordinates only
+ irest = 1      ! restarting simulation 
+ ntx = 5        ! read in coordinates and velocities
 
 !!! OUTPUT
  ntxo = 2       ! restart file format binary

@@ -1,5 +1,0 @@
-trajin parent.rst
-trajin seg.rst
-reference chignolin.pdb
-rms reference out rmsd.dat @CA
-

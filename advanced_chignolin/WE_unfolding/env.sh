@@ -1,13 +1,14 @@
+#!/bin/bash
 
-if [[ -z "$WEST_ROOT" ]]; then
-    echo "Please set the environment variable WEST_ROOT"
-    exit
-fi
+# Set up environment for dynamics
+source /home/atb43/apps/amber18/amber.sh
 
-if [[ -z "$WEST_SIM_ROOT" ]]; then
-    export WEST_SIM_ROOT="$PWD"
-fi
+# Set up environment for westpa
+source /home/atb43/apps/westpa/westpa.sh
+export WEST_PYTHON=$(which python2.7)
+export WEST_SIM_ROOT="$PWD"
 export SIM_NAME=$(basename $WEST_SIM_ROOT)
-echo "simulation $SIM_NAME root is $WEST_SIM_ROOT"
 
-
+# Set runtime commands (this is said to be easier on the filesystem)
+export PMEMD=$(which pmemd)
+export CPPTRAJ=$(which cpptraj)
