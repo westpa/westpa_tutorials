@@ -15,10 +15,13 @@ P53 peptide conformational sampling
 ## Advanced tutorials
 
 Chignolin protein folding
+
 WExplore K+ 18-crown-6-ether association
 
 ## Analysis tutorials
 
 Calculating progress coordinates using MDAnalysis/MDTraj
+
 The w\_ipa suite of analysis tools
+
 Dataset visualization and movie-making
