@@ -932,7 +932,7 @@ This is a good option when the goal of your process is to generate as many confi
 However, RMSD cannot differentiate among conformations that have the same large RMSD values. 
 To further differentiate between such conformations, we can include another orthogonal measure of unfoldedness such as the end-to-end distance of the peptide. 
 
-To determine a suitable binning scheme, we will start with an upper limit of 10 \AA for the heavy-atom RMSD dimension of the progress coordinate. 
+To determine a suitable binning scheme, we will start with an upper limit of 10 \AA{} for the heavy-atom RMSD dimension of the progress coordinate. 
 Spacing the bins along this dimension by 1’s may be too large for any transitions to occur between bins so we opt for a finer bin spacing:
 
 \verb|[0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.4, 1.8,|
@@ -1485,7 +1485,7 @@ See below for specifics involving the MDAnalysis and MDTraj analysis suites.
 Files in \verb|bstates/| directory:
 \begin{itemize}
 \item \verb|P53.MDM2.rst| - Used as initial crystal structure to compare to the trajectory when calculating the RMSD and to start new trajectories in \verb|runseg.sh|.
-\item \verb|bstates.txt| - specify restart file \verb|P53.rst|.
+\item \verb|bstates.txt| - specify restart file \verb|P53.MDM2.rst|.
 \end{itemize}
 
 \textbf{Using the MDTraj Analysis Suite}
