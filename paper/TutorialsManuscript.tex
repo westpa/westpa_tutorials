@@ -189,7 +189,7 @@ Strictly speaking, it is worth noting that bins are not required to perform WE-l
 Each WE simulation ultimately yields an ensemble of trajectories, from which different types of information can be extracted. 
 Each trajectory which makes a full transition between states of interest, say from A to B, yields an ordered set of configurations which can be analyzed for structural changes and the sequence of events. 
 The full weighted ensemble of trajectories, if clustered into pathway groups, can provide information on the relative importance of different pathways \citep{Ernesto2019}. 
-If WE was performed with a “recycling” condition where trajectories reaching B are fed back to A, then the rate constant for the process can be estimated if the simulation achieves steady state \citep{Divesh2010,ZuckermanChong2017}. 
+If WE was performed with a “recycling” condition where trajectories reaching B are fed back to A, then the rate constant for the process can be estimated from the probability flux arriving to state B if the simulation achieves steady state and hence constant flux \citep{Divesh2010,ZuckermanChong2017}. 
 If a WE simulation does not achieve steady state, it is still possible in principle to estimate rate constants using a non-Markovian analysis, also called a history-augmented Markov State Model \cite{Ernesto2014,Upendra2019,Jeremy2019}.
 
 \subsection{Prerequisites}
