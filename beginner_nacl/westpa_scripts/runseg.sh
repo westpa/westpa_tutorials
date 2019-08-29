@@ -9,41 +9,20 @@ cd $WEST_SIM_ROOT
 mkdir -pv $WEST_CURRENT_SEG_DATA_REF
 cd $WEST_CURRENT_SEG_DATA_REF
 
-ln -sv $WEST_SIM_ROOT/common_files/nacl.parm7 .
+ln -sv $WEST_SIM_ROOT/common_files/bstate.pdb .
 
 if [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_CONTINUES" ]; then
-  sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/common_files/md.in > md.in
-  ln -sv $WEST_PARENT_DATA_REF/seg.rst ./parent.rst
+  ln -sv $WEST_PARENT_DATA_REF/seg.chk ./parent.chk
 elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
-  sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/common_files/md.in > md.in
-  ln -sv $WEST_PARENT_DATA_REF ./parent.rst
+  ln -sv $WEST_PARENT_DATA_REF ./parent.chk
 fi
 
-$PMEMD -O -i md.in   -p nacl.parm7  -c parent.rst \
-          -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
+# Run Dynamics with OpenMM
+python $WEST_SIM_ROOT/common_files/nacl_prod.py
 
-TEMP=$(mktemp)
-COMMAND="         parm nacl.parm7\n"
-COMMAND="$COMMAND trajin $WEST_CURRENT_SEG_DATA_REF/parent.rst\n"
-COMMAND="$COMMAND trajin $WEST_CURRENT_SEG_DATA_REF/seg.nc\n"
-COMMAND="$COMMAND distance na-cl :1@Na+ :2@Cl- out $TEMP\n"
-COMMAND="$COMMAND go\n"
-
-echo -e $COMMAND | $CPPTRAJ
-cat $TEMP | tail -n +2 | awk '{print $2}' > $WEST_PCOORD_RETURN
-
-if [ ${WEST_COORD_RETURN} ]; then
-  COMMAND="         parm nacl.parm7\n"
-  COMMAND="$COMMAND trajin  $WEST_CURRENT_SEG_DATA_REF/parent.rst\n"
-  COMMAND="$COMMAND trajin  $WEST_CURRENT_SEG_DATA_REF/seg.nc\n"
-  COMMAND="$COMMAND strip :WAT \n"
-  COMMAND="$COMMAND autoimage fixed Na+ \n"
-  COMMAND="$COMMAND trajout $WEST_CURRENT_SEG_DATA_REF/seg.pdb\n"
-  COMMAND="$COMMAND go\n"
-  echo -e $COMMAND | $CPPTRAJ 
-  cat $WEST_CURRENT_SEG_DATA_REF/seg.pdb | grep 'ATOM' \
-    | awk '{print $6, $7, $8}' > $WEST_COORD_RETURN
-fi
+#Calculate pcoord with MDAnalysis
+python $WEST_SIM_ROOT/common_files/get_distance.py
+cat dist.dat > $WEST_PCOORD_RETURN
 
 # Clean up
-rm -f $TEMP md.in parent.rst seg.nfo seg.pdb nacl.parm7
+rm -f parent.chk bstate.pdb dist.dat

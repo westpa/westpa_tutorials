@@ -2,14 +2,14 @@
  &cntrl
 
 !!! INPUT
- irest = 0      ! new simulation, velocities will be assigned
- ntx = 1        ! read in coordinates only
+ irest = 1      ! restarting simulation 
+ ntx = 5        ! read in coordinates and velocities
 
 !!! OUTPUT
  ntxo = 2       ! restart file format binary
- ntpr = 10000   ! write energy information every 10000 steps to log file
- ntwx = 10000   ! write coordinates every 10000 steps to a trajectory file
- ntwr = 10000   ! write restart file every 10000 steps to corresponding file
+ ntpr = 100000   ! write energy information every 100000 steps to log file
+ ntwx = 100000   ! write coordinates every 100000 steps to a trajectory file
+ ntwr = 100000   ! write restart file every 100000 steps to corresponding file
  ioutfm = 1     ! use binary NetCDF format for trajectories
 
 !!! DYNAMICS
