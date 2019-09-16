@@ -42,7 +42,7 @@ big_regions = latest_mapper.fetch_centers(biggest_regions_inds)
 med_regions = latest_mapper.fetch_centers(medium_regions_inds)
 sml_regions = latest_mapper.fetch_centers(small_regions_inds)
 
-print("There are {0} big regions, {1} medium regions, and {2} large regions"
+print("There are {0} big regions, {1} medium regions, and {2} small regions"
       .format(len(big_regions),len(med_regions),len(sml_regions)))
 
 # Since these coordinates are simply the pcoord values used in system.py,

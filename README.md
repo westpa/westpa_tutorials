@@ -6,9 +6,7 @@ classification.
 
 ## Beginner tutorial
 
-`Na+/Cl- molecular association`_
-
-.. _`Na+/Cl- molecular association`: https://github.com/westpa/westpa_tutorials/wiki/Basic-Tutorial:-Na--Cl--Association
+Na+/Cl- molecular association
 
 ## Intermediate tutorial
 
