@@ -193,7 +193,7 @@ In WESTPA, bins can be constructed from simple one or two-dimensional “progres
 Strictly speaking, it is worth noting that bins are not required to perform WE-like resampling \citep{Dickson2018or19}.
 
 Each WE simulation ultimately yields an ensemble of trajectories, from which different types of information can be extracted. 
-Each trajectory which makes a full transition between states of interest, say from A to B, yields an ordered set of configurations which can be analyzed for structural changes and the sequence of events. 
+Each trajectory which makes a full transition between states of interest, say from A to B, yields an ordered set of configurations which can be analyzed for structural changes and for the sequence of events. 
 The full weighted ensemble of trajectories, if clustered into pathway groups, can provide information on the relative importance of different pathways \citep{Ernesto2019}. 
 If WE was performed with a “recycling” condition where trajectories reaching B are fed back to A, then the rate constant for the process can be estimated from the probability flux arriving to state B if the simulation achieves steady state and hence constant flux \citep{Divesh2010,ZuckermanChong2017}.
 If a WE simulation does not achieve steady state, it is still possible in principle to estimate rate constants using a non-Markovian analysis, also called a history-augmented Markov State Model \cite{Ernesto2014,Upendra2019,Jeremy2019}.
@@ -258,44 +258,53 @@ Sample shell scripts for executing WESTPA simulations on various computing resou
 \caption{WE parameters used for notable applications in the literature. 
 The asterisk (*) indicates an application with I/O operations that is too frequent for supercomputers and gaming GPUs.}
 \centering
-\begin{tabular}{ | p{0.22\linewidth} | p{0.22\linewidth} | p{0.22\linewidth} | p{0.22\linewidth} |}
+\begin{tabular}{ | p{0.11\linewidth} | p{0.30\linewidth} | p{0.30\linewidth} | p{0.17\linewidth} |}
 \hline
 \textbf{Rare-event process} & 
 \textbf{System and size} & 
 \textbf{WE Parameters} & 
 \textbf{Suitable computing resources} \\
 \hline
-millisecond protein folding \citep{Mostofian2019} & 
-NTL9 protein in generalized Born (GB) implicit solvent with low and high solvent viscosity (collision frequency of 5 ps\textsuperscript{-1} and 80 ps\textsuperscript{-1}, respectively) 627 atoms & 
+millisecond protein 
+
+folding \citep{Mostofian2019} & 
+NTL9 protein in generalized Born (GB) implicit solvent with low and high 
+
+solvent viscosity (collision frequency of 5 ps\textsuperscript{-1} and 80 ps\textsuperscript{-1}, respectively): 
+
+627 atoms & 
 1D progress coordinate: C\textsubscript{$\alpha$} RMSD from the folded structure
 
-Binning: 53 bins, that are finely spaced for near-folded structures (35 bins for 1.0 \AA{} < RMSD < 4.4 \AA) and more coarsely spaced for more unfolded structures (12 bins for 4.4 \AA{} < RMSD < 6.6 \AA; 5 bins for 6.6 \AA < RMSD < 10.2 \AA)
+Binning: 53 bins, that are finely spaced for near-folded structures (35 bins for 1.0 \AA{} < RMSD < 4.4 \AA) and more coarsely spaced for more unfolded structures: 
 
-$\tau$ = 10 ps 
+(12 bins for 4.4 \AA{} < RMSD < 6.6 \AA{} and 
 
-1,200 WE iterations
+5 bins for 6.6 \AA < RMSD < 10.2 \AA)
+
+$\tau$ = 10 ps; 1,200 WE iterations;
 
 4 trajectories/bin
-& Professional-Graphics-programming GPUs\textsuperscript{*} (e.g. NVIDIA GTX 1080) \\
+& Professional-graphics-programming GPUs\textsuperscript{*} (e.g. NVIDIA GTX 1080) \\
 \hline
 peptide-protein association \citep{Zwier2016} & 
-p53 peptide and MDM2 protein in GB/SA implicit solvent: 1685 atoms & 
+p53 peptide/MDM2 protein in GB/SA implicit solvent: 1685 atoms & 
 2D progress coordinate: heavy-atom RMSD of p53 peptide relative to its MDM2-bound conformation following alignment on (i) MDM2 and (ii) itself. 
 
 Binning: 16 bins with 0.5 \AA{} widths along the p53-aligned RMSD and widths ranging from 0.2 to 2 \AA{} for the MDM2-aligned RMSD. 
 
-$\tau$ = 50 ps; 396 WE iterations
+$\tau$ = 50 ps; 396 WE iterations;
+
 8 trajectories/bin & 
 1600 CPU cores on a supercomputer (e.g. XSEDE’s Bridges) or 16 GPUs (e.g. NVIDIA Tesla P100 GPUs) \\
 \hline
 protein-protein association \citep{Saglam2019} & 
-barnase and barstar proteins in explicit solvent: >100,000 atoms & 
+barnase/barstar proteins in explicit solvent: >100,000 atoms & 
 2D progress coordinate: (i) heavy-atom RMSD of barstar residues D35 and D39 after alignment on barnase, and (ii) minimum protein-protein separation distance.  
 D35 and D39 are the barstar residues that become the most buried upon binding barnase.
 
 $\tau$ = 20 ps; 650 WE iterations
 
-Binning: 72 bins with coarsely spaced bins every 1 \AA{} from 10 to 60 \AA{} and more finely spaced bins every 0.5 \AA{} from 0 to 10 \AA{} along the RMSD coordinate; two bins along the distance coordinate separated by a bin boundary at 5 \AA{}. & 
+Binning: 72 bins with coarsely spaced bins every 1 \AA{} from 10 to 60 \AA{} and more finely spaced bins every 0.5 \AA{} from 0 to 10 \AA{} along the RMSD coordinate; two bins along the distance coordinate separated by a bin boundary at 5 \AA{}; fixed total number of trajectories (1600)& 
 1600 CPU cores on a supercomputer (e.g. XSEDE’s Bridges) or 16 GPUs (e.g. NVIDIA Tesla P100 GPUs) \\
 \hline
 \end{tabular}
@@ -412,7 +421,7 @@ Since \verb|runseg.sh| will cause many different files to be generated, it is im
 The methods used in the example \verb|runseg.sh| files that have been provided in the tutorials below are sufficient in most cases, but please refer to Section 4 for a discussion on file management and network traffic.
 
 If there are any errors in the WESTPA setup (e.g. incorrect number of elements in the pcoord array, misplaced input files), the simulation will not proceed past the first WE iteration. 
-If this is the case, check the \verb|west.log| file to see if there is a good reason why the simulation is failing. 
+If this is the case, check the \verb|west.log| file to see if there is a good reason for why the simulation is failing. 
 Usually, however, detailed logging of any errors is available in the \verb|seg_logs/| directory for each segment of each iteration. 
 View the segment log for a particular segment to see if the dynamics are completing successfully and that the progress coordinate (and auxdata) values are being calculated and passed to the appropriate variables (such as \verb|WEST_PCOORD_RETURN|).
 
@@ -448,7 +457,7 @@ In addition, a code scaling test (plot of the time required to complete a WE ite
 \item If your system stops advancing along your progress coordinate, consider reducing the $\tau$ value, increasing the number of trajectories/bin, and/or using a finer bin spacing in that region of the progress coordinate while combining bins from higher probability regions. 
 Note that bin spacings are arbitrary in WESTPA and the most efficient bin sizes likely are not exactly equal. 
 Details for combining and creating bins “on-the-fly” are provided below in the Intermediate Tutorial (Section 6.2). 
-\item If none of the above efforts in step 3) are effective based on a one-dimensional progress coordinate, your progress coordinate may be missing orthogonal and relevant slow degrees of freedom. 
+\item If none of the above efforts in step 3 are effective based on a one-dimensional progress coordinate, your progress coordinate may be missing orthogonal and relevant slow degrees of freedom. 
 To address this issue, consider using a two-dimensional progress coordinate [\citep{Saglam2019,Zwier2016}; Section 6.2] or a “nested” coordinate in which the progress coordinate switches to monitoring another observable once a particular value for the initial observable is reached. 
 Note that additional dimensions in the progress coordinate greatly increase the number of bins and hence the cost of the WE run, which is the motivation for nesting an additional coordinate in only a subset of the initial bins. 
 You might also consider binning strategies that are not based on user-defined coordinates, but instead employ Voronoi cells potentially in conjunction with a string method or the WExplore strategy (\citep{Dickson2014}; Sections 3.2 and 6.4). 
@@ -469,7 +478,7 @@ In addition, factors affecting the optimal number of trajectories are discussed.
 %%%Fig 2%%%
 \begin{figure}
 \includegraphics[width=\linewidth]{Figure2.eps}
-\caption{Hierarchical Voronoi polyhedra for the Ring Potential model system \citep{Dickson2009,Adelman2013}.  
+\caption{Hierarchical Voronoi polyhedra for the ring potential model system \citep{Dickson2009,Adelman2013}.  
 The blue colors show potential energy minima on the left and right and shallower minima on the top and bottom. 
 Heavy lines show the Voronoi boundaries between the largest regions; one region is defined per local energy minimum.  
 Each of these is broken up by medium regions (shown with medium-weight lines), which are themselves broken up by smaller regions (shown with light-weight lines).}
@@ -495,7 +504,7 @@ If simulations very easily proceed from one to the next then the spacing might b
 It is difficult to know beforehand what the optimal spacing will be, but suitable parameters can be easily found using a little common sense and a bit of trial-and-error.
 
 \textbf{Number of Trajectories.} In contrast to conventional WE, WExplore does not employ a fixed number of trajectories (N\textsubscript{t}) per region. 
-This would be wildly impractical, as the typical total number of regions is very large (e.g. 10,000 for a branching factor of 10 and a four-level hierarchy). 
+This would be wildly impractical, as the typical total number of regions is very large (e.g. 10000 for a branching factor of 10 and a four-level hierarchy). 
 Previous applications have aimed to choose N\textsubscript{t} to be as small as possible, while still allowing for simultaneous sampling of all states of interest, with a convenient value being 48, which is nicely congruent with 4-, 6- and 8-GPU compute servers \citep{Dickson2017,Dixon2018,Lotz2018}. 
 A larger value will result in more consistent runs, while a smaller value allows for longer runs and more replicates. 
 In practice we have found that single WExplore runs show high autocorrelation regardless of the value of N\textsubscript{t}, and that averaging over multiple replicates is a necessity, both to accurately compute observables and to estimate their uncertainty.
@@ -633,7 +642,7 @@ This tutorial also assumes the user has some knowledge of the WE strategy, as it
 \textbf{Computational Requirements.} A user should set aside at least 18 GB of disk space. 
 This simulation took \textasciitilde 50 hrs to complete using 1 Intel Xenon 3.50 GHz CPU core.
 
-This tutorial uses OpenMM version 7.3 for dynamics propagation (\url{http://openmm.org/}) and MDTraj 1.9.3 for progress coordinate calculations (\url{http://mdtraj.org/1.9.3/). System setup and equilibration was performed separately in OpenMM. A minimum version of 3.1.0 for HDFView is required for H5 file analysis.}
+This tutorial uses OpenMM version 7.3 for dynamics propagation (\url{http://openmm.org/}) and MDTraj 1.9.3 for progress coordinate calculations (\url{http://mdtraj.org/1.9.3/}). System setup and equilibration was performed separately in OpenMM. A minimum version of 3.1.0 for HDFView is required for H5 file analysis.
 
 \subsubsection{Setting up a WE Simulation Using WESTPA}
 
@@ -800,10 +809,8 @@ Open this file, the contents of which are displayed in Figure 4.
 \begin{figure}
 \includegraphics[width=\linewidth]{Figure4.pdf}
 \caption{Probabiity evolution of Na\textsuperscript{+}/Cl\textsuperscript{-} association as a function of interatomic distance and WE iteration. 
-The default output from plothist displays the histograms as the negative log of the probability. 
-This can be adjusted by adding the appropriate command line options to plothist (run plothist -h for more information). 
-The distribution from your particular simulation may look slightly differnet. 
-Oberve that at the beginning of the simulation, the probability is centered around 12 \AA{} (our initial distance).}
+The distribution from your particular simulation may look slightly different. 
+Observe that at the beginning of the simulation, the probability is centered around 12 \AA{} (the initial distance).}
 \label{fig:view}
 \end{figure}
 %%%%%%%%
@@ -876,7 +883,7 @@ Your plot should look something similar to Figure 5, which was generated in \ver
 \caption{Mean flux evolution of Na\textsuperscript{+}/Cl\textsuperscript{-} association as a function of WE iteration. 
 The mean flux alternatively rises sharply and then relaxes. 
 These "peaks" correspond to probability crossing into the target state. 
-Your plot may still not be completely converged after 100 iterations.}
+Your plot may still not be completely converged after 100 WE iterations.}
 \label{fig:view}
 \end{figure}
 %%%%%%%%
@@ -1026,7 +1033,7 @@ Observe the two probability distributions in Figure 6.
 \begin{subfigure}[B]{0.35\textwidth}
 \includegraphics[width=\linewidth]{Figure6B.pdf}
 \end{subfigure}
-\caption{Probability distributions from plothist for each of the two progress coordinate dimensions versus WE iteration. 
+\caption{Probability distributions for each of the two progress coordinate dimensions versus WE iteration. 
 The simulation was analyzed after 10 WE iterations.}
 \label{fig:view}
 \end{figure}
@@ -1073,7 +1080,7 @@ The completed H5 file is included in \verb|for_analysis/| for your convenience.
 \begin{subfigure}[B]{0.35\textwidth}
 \includegraphics[width=\linewidth]{Figure7B.pdf}
 \end{subfigure}
-\caption{Probability distributions from plothist for each of the two progress coordinate dimensions versus WE iteration. 
+\caption{Probability distributions for each of the two progress coordinate dimensions versus WE iteration. 
 The simulation was re-analyzed after 40 total WE iterations}
 \label{fig:view}
 \end{figure}
@@ -1250,7 +1257,7 @@ In contrast, the unfolding process results in faster convergence of the correspo
 \includegraphics[width=\linewidth]{Figure11.png}
 \caption{Estimating the folding rate constant of chignolin. 
 The 20-ns window-averaged folding rate constant is shown in a semi-logarithmic plot for three independent WESTPA simulations (black, red, and green profiles) with the same unfolded starting structure (see lower left). 
-Note the significantly longer molecular and aggregate simulation times for each simulation to obtain converged rates of folding compared to unfolding (see Figure 11). 
+Note the significantly longer molecular and aggregate simulation times for each simulation to obtain converged rate constants of folding compared to unfolding (see Figure 11). 
 The corresponding rate constant from the brute force simulation is indicated by the horizontal blue line and its confidence interval by the shaded region.}
 \label{fig:view}
 \end{figure}
@@ -1748,7 +1755,7 @@ Finally, a movie-making tool (here, we use \verb|mencoder|) creates a movie from
 \begin{figure}
 \includegraphics[width=\linewidth]{Figure13.png}
 \caption{Two-dimensional probability distribution as a function of the progress coordinate. 
-Two representative, continuous trajectories (435 and 279) that originate from distinct initial states are traced in cyan and white, respectively.}
+Two representative, continuous trajectories that originate from distinct initial states are traced in cyan and white, respectively.}
 \label{fig:view}
 \end{figure}
 %%%%%%%%
