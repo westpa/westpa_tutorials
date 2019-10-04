@@ -3,7 +3,7 @@
 %%% ADAPTED FROM ELIFE ARTICLE TEMPLATE (8/10/2017)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% PREAMBLE
-\documentclass[9pt,tutorial,ASAPversion]{livecoms}
+\documentclass[9pt,tutorial,pubversion]{livecoms}
 
 % Use the 'onehalfspacing' option for 1.5 line spacing
 % Use the 'doublespacing' option for 2.0 line spacing
@@ -79,11 +79,11 @@
 %%% Fill out these parameters when available
 %%% These are used when the "pubversion" option is invoked
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pubDOI{10.XXXX/YYYYYYY}
-\pubvolume{<volume>}
-\pubissue{<issue>}
-\pubyear{<year>}
-\articlenum{<number>}
+\pubDOI{10.33011/livecoms.1.2.10607}
+\pubvolume{1}
+\pubissue{2}
+\pubyear{2019}
+\articlenum{10607}
 \datereceived{18 June 2019}
 \dateaccepted{26 September 2019}
 
@@ -108,12 +108,12 @@ The tutorials range from a molecular association process in explicit solvent to 
 \section{Introduction and Scope of Tutorials}
 
 WESTPA (The Weighted Ensemble Simulation Toolkit with Parallelization and Analysis; \url{https://westpa.github.io/westpa}) \citep{Zwier2015} is an open-source, highly scalable software framework for carrying out extended-timescale simulations of rare events with rigorous kinetics using the weighted ensemble (WE) strategy \citep{HuberKim1996}. 
-Key features of WESTPA, written in Python, include (i) a general interface that enables interoperability with any dynamics engine (e.g. Gromacs \citep{gromacs}, Amber \citep{amber}, OpenMM \citep{openmm}); (ii) an optimized, parallel implementation of the WE strategy that exhibits perfect scaling out to >4000 CPU cores ; (iii) an effective suite of tools for analysis of the millions of files created by each simulation; (iv) full extensibility for enhancements to simulation protocols and analysis tools; and (v) portability of the software on any Unix-like computing resource, including typical computing clusters and supercomputers. 
+Key features of WESTPA, written in Python, include (i) a general interface that enables interoperability with any dynamics engine (e.g. Gromacs \citep{gromacs}, Amber \citep{amber}, OpenMM \citep{openmm}); (ii) an optimized, parallel implementation of the WE strategy that exhibits perfect scaling out to >4000 CPU cores; (iii) an effective suite of tools for analysis of the millions of files created by each simulation; (iv) full extensibility for enhancements to simulation protocols and analysis tools; and (v) portability of the software on any Unix-like computing resource, including typical computing clusters and supercomputers. 
 The WESTPA software also includes plugins for using a WE-based string method \citep{Adelman2013} and a WE strategy utilizing hierarchical Voronoi bins (WExplore) \citep{Dickson2014}.  
 The WESTPA software package has enabled efficient atomistic simulations of host-guest associations \citep{Zwier2011}, protein binding processes \citep{Zwier2016, Saglam2019}, and protein folding \citep{Upendra2019}. 
 This efficiency (relative to standard “brute force” simulations) has been demonstrated to increase exponentially with the effective free energy barrier of the rare event \citep{DeGrave2018}. 
 
-Here we present a suite of five tutorials for the WESTPA software in order of difficulty from basic to advanced, including a tutorial involving the suite of analysis tools. These tutorials can also be found online in the WESTPA GitHub repository (\url{https://github.com/westpa/westpa_tutorials/wiki})
+Here we present a suite of five tutorials for the WESTPA software in order of difficulty from basic to advanced, including a tutorial involving the suite of analysis tools. These tutorials can also be found online in the WESTPA GitHub repository (\url{https://github.com/westpa/westpa_tutorials/wiki}).
 Learning objectives and expected outcomes are outlined for each tutorial. 
 This set of tutorials is restricted to applications in molecular dynamics (MD) simulations, but WE and WESTPA are applicable to arbitrary stochastic simulations \citep{Donovan2013,Donovan2016,Read2018}.
 
@@ -137,7 +137,7 @@ After completing the Intermediate Tutorial involving the conformation sampling o
 
 After completing Advanced Tutorial 1 involving the folding/unfolding of the chignolin mini-protein the user should be able to:
 \begin{enumerate}
-\item Use brute force simulations to identify appropriate initial and/or a target states
+\item Use brute force simulations to identify appropriate initial and/or target states
 \item Obtain the probability flux into the target state of a WESTPA simulation, convert it to a mean rate constant, and interpret the results
 \item Approach larger, more biologically relevant events (like protein folding) with a WE-oriented mindset
 \end{enumerate}
@@ -157,7 +157,7 @@ After completing the Analysis Tutorials, the user should be able to:
 \item Create a movie of how a probability distribution evolves with time
 \end{enumerate}
 
-The tutorials will use an array of different dynamics packages to showcase WESTPA’s interoperability. All of these packages and the auxiliary programs required (for analysis etc.) for each tutorial are freely available and documentation can readily be found online.  The version of each software package used is also provided in each tutorial’s “computational requirements” section. 
+The tutorials will use an array of different dynamics packages to showcase WESTPA’s interoperability. In each tutorial, all of the required packages and auxiliary programs (for analysis etc.) are freely available and documentation can be readily found online.  The version of each software package is also provided in each tutorial’s “computational requirements” section. 
 
 \subsection{Using WE Concepts in MD Simulation}
 
@@ -207,7 +207,7 @@ A prerequisite for all of WESTPA tutorials presented here is that users already 
 In fact, we recommend running multiple short, standard simulations prior to applying the WE strategy in order to (i) ensure that the system is prepared and the dynamics are propagated according to best practices (e.g., see \citep{Mobley2019}), (ii) identify potential progress coordinates and other observables that may be worth monitoring during the WE simulation, (iii) determine an initial definition of the target state, and (iv) estimate storage needs for your eventual WE simulation and the ns/day that can be generated for your system. 
 It is also important to identify sources of validation for your simulation (e.g., from experiment and/or standard simulations) and to be familiar with the estimation of statistical uncertainty in the computed observables, including those used for validation (\citep{Grossfield2019}). 
 We highly recommend that new users read the WE overview (\url{https://www.csb.pitt.edu/Faculty/zuckerman/we-overview.pdf}) as well as a recent review article \citep{ZuckermanChong2017}. 
-In addition, new users are encouraged to search the WESTPA mailing list (\url{https://groups.google.com/forum/#!forum/westpa-users}) for possible solutions or submit questions/issues there.
+In addition, new users are encouraged to search the WESTPA mailing list (\url{https://groups.google.com/forum/#!forum/westpa-users}) for possible solutions or to submit questions/issues to the mailing list.
 
 \subsubsection{Software Requirements}
 
@@ -273,15 +273,15 @@ NTL9 protein in generalized Born (GB) implicit solvent with low and high
 solvent viscosity (collision frequency of 5 ps\textsuperscript{-1} and 80 ps\textsuperscript{-1}, respectively): 
 
 627 atoms & 
-1D progress coordinate: C\textsubscript{$\alpha$} RMSD from the folded structure
+1D progress coordinate: C\textsubscript{$\alpha$} RMSD from the folded structure.
 
 Binning: 53 bins, that are finely spaced for near-folded structures (35 bins for 1.0 \AA{} < RMSD < 4.4 \AA) and more coarsely spaced for more unfolded structures: 
 
 (12 bins for 4.4 \AA{} < RMSD < 6.6 \AA{} and 
 
-5 bins for 6.6 \AA < RMSD < 10.2 \AA)
+5 bins for 6.6 \AA{} < RMSD < 10.2 \AA).
 
-$\tau$ = 10 ps; 1,200 WE iterations;
+$\tau$ = 10 ps; 1200 WE iterations;
 
 4 trajectories/bin
 & Professional-graphics-programming GPUs\textsuperscript{*} (e.g. NVIDIA GTX 1080) \\
@@ -334,7 +334,7 @@ This workflow is only meant to give a sense of the mechanics and flow of using W
 \verb|tstate.file| & define the target state (for steady state \\
 {} & simulations only) \\
 \hline
-\verb|west.cfg| & specify most WE simulation parameters \\
+\verb|west.cfg| & specify main WE simulation parameters \\
 \hline
 \verb|westpa_scripts/| & directory containing essential scripts \\
 \hline
@@ -495,7 +495,7 @@ The distance used does not need to be differentiable or continuous.
 
 \textbf{Region Size, Number of Levels, Branching Factor.} Once the distance metric is defined, the best practice is to run a short, straightforward simulation and observe the scale of fluctuations.
 To be effective, the smallest region size (at the lowest level of the hierarchy) should be just outside the reach of the typical fluctuations observed in a time period $\tau$. 
-This ensures that the first cloning events will correspond to significant differences between trajectories. 
+This ensures that the first replication events will correspond to significant differences between trajectories. 
 At the other end, the largest regions should be big enough that a set of $B$ regions can evenly tile the space of interest, where $B$ is the branching factor. 
 Typically, $B$ is set to 10, which is low enough to offer a big efficiency boost in region assignment, and high enough that branch factor overflows (where the simulation attempts to create a region higher than the branch number) do not occur early on in the simulation. 
 The optimal number of levels between the smallest and the largest region sizes is system dependent. 
@@ -590,7 +590,7 @@ This strategy has been shown to yield rate constants using a fraction of the sim
 Once the transient has completed, if multiple runs were performed, it is necessary to estimate the uncertainty in the rate constant based on the group of independent WE runs. 
 The flux curves from the individual runs, plotted as a function of molecular time, may vary significantly as sketched in Figure 3. 
 This large variation invalidates typical uncertainty estimation schemes based on the standard error of the mean, and we therefore recommend employing a Bayesian bootstrapping procedure \citep{MostofianJCTC2019}. 
-This approach appears to be better than alternative approaches for handling estimates which vary over orders of magnitude, but we emphasize that the nominal 95\% “credibility regions” produced are overly optimistic and only cover the true mean a much smaller percent of the time \citep{MostofianJCTC2019}.
+This approach appears to be better than alternative approaches for handling estimates which vary over orders of magnitude, but we emphasize that the nominal 95\% “credibility regions” produced are overly optimistic and only cover the true mean a much smaller percentage of the time \citep{MostofianJCTC2019}.
 
 %%%Fig 3%%%
 \begin{figure}
@@ -610,7 +610,7 @@ The history augmented Markov State Model (haMSM) analysis (green lines) provides
 \subsubsection{Introduction}
 
 This tutorial involves carrying out a WE simulation of a molecular association process: Na\textsuperscript{+}/Cl\textsubscript{-} association. 
-After completing this tutorial, a user should be able to set up a simple WE simulation using the WESTPA software and develop an intuition for how changes in the WE parameters will influence the efficiency of sampling a process of interest, thus allowing that user to choose appropriate parameters for that process.
+After completing this tutorial, a user should be able to set up a simple WE simulation using the WESTPA software and develop an intuition for how changes in the WE parameters will influence the efficiency of sampling a process of interest, thus allowing the user to choose appropriate parameters for that process.
 
 \textbf{Learning Objectives.} Though we strive to make the WESTPA software as user-friendly as possible, there are many system-specific parameters that must be carefully specified. 
 The purpose of this basic tutorial is to introduce a new user to WESTPA and have that user become familiar with the flow of setting up and running a WE simulation.   
@@ -626,9 +626,8 @@ Specific learning objectives are:
 
 \subsubsection{Prerequisites}
 
-Users should install the latest version of the WESTPA software package, either by cloning from Git and compiling or through Conda. 
-Installation instructions can be found on our website. 
-Users will need to have Python 2.7 installed in order to use WESTPA. 
+Users should install the latest version of the WESTPA software package through Conda. 
+Installation instructions can be found on our Github wiki (\url{https://github.com/westpa/westpa/wiki/Installing-WESTPA}). 
 For analysis of simulation data, the \verb|hdfview| software greatly facilitates the visualization of large datasets. 
 We will make use of that program in the ‘Analysis’ section of this tutorial.
 
@@ -674,7 +673,7 @@ Once a simulation is deemed complete, users can make use of the WESTPA analysis 
 \textbf{The System.} To obtain a basic understanding of WESTPA’s parameters and learn how the software works, we will begin by studying the molecular association of Na\textsuperscript{+} and Cl\textsuperscript{-} ions. 
 Our system will consist of a single Na\textsuperscript{+} cation along with a single Cl\textsuperscript{-} anion modeled with Joung and Cheatham parameters \citep{JoungCheatham2009} and solvated in a box of TIP3P water molecules \citep{tip3p}. 
 These ions are initially dissociated at a separation distance of 12 \AA. 
-The system was prepared using OpenMM and the appropriate input files are provided under “westpa\_tutorials” on GitHub, where you will also find a copy of this tutorial’s simulation directory (\verb|beginner_nacl|). 
+The system was prepared using OpenMM and the appropriate input files are provided under “westpa\_tutorials” on GitHub, where you will also find a copy of this tutorial’s simulation directory (\verb|basic_nacl|). 
 We will not cover how the input files were generated or the rationale behind choices made when setting up the system (e.g. force field, water model etc.).
 
 
@@ -689,9 +688,9 @@ This is an OpenMM checkpoint file, which was saved after equilibration.
 This is the file needed to directly resume dynamics.  
 Depending on the dynamics engine you are using, this file will be different but will have the same function (for instance, an Amber restart file would be placed here if one were using \verb|sander| to run dynamics).
 Also in this directory is a file named \verb|bstates.txt|. 
-This file contains the name of our basis state structure and the probability of it being chosen if we want to sample a variety of initial structures (since we only are preparing one basis state, that probability is just 1). 
+This file contains the name of our basis state structure and the probability of it being chosen if we want to sample a variety of initial structures (since we are preparing only one basis state, that probability is just 1). 
 To more fully sample the configurational space of some process, it is often prudent to include more than one initial structure. 
-In that case, all of those structure files can be placed in this directory with their names and probabilities included in the \verb|bstates.txt| file.
+In that case, all of those structure files can be placed in this directory with their file names and probabilities included in the \verb|bstates.txt| file.
 
 \textbf{Files for Dynamic Propagation.} Also necessary for running an Amber simulation are the topology and simulation input files. 
 Those two files (\verb|bstate.pdb| and \verb|nacl_prod.py|) are placed in the \verb|common_files/| directory. 
@@ -715,12 +714,12 @@ To run an equilibrium simulation, simply delete those two lines.
 The choice of whether to run an equilibrium vs steady state simulation will depend on the research question being asked. 
 Where do we want the system to go?  
 Equilibrium simulations can be efficient in exploring configurational space and sampling ensembles of conformations. 
-On the other hand, steady state simulations, where trajectories that reach some target state are recycled back to the initial state (along with their trajectory weights), can be more efficient in generating rate constants, and for exploring pathways towards some known target state. 
+On the other hand, steady state simulations, where trajectories that reach some target state are recycled back to the initial state (along with their trajectory weights), can be more efficient in generating rate constants, and for exploring pathways towards some known target state \citep{Pratt2019}. 
 
 In our simulation, we do have a specific target state in mind and we know exactly what it looks like: Na\textsuperscript{+} and Cl\textsuperscript{-} interacting ionically at a close distance. 
 We will therefore prepare to run a steady state simulation. 
 
-\textbf{Progress Coordinate, Binning Scheme and $\tau$ value.}  For any WE simulation, we recommend choosing a progress coordinate that monitors the slowest relevant motion(s) such that faster motions will “go along for the ride.” 
+\textbf{Progress Coordinate, Binning Scheme and $\pmb{\tau}$ value.}  For any WE simulation, we recommend choosing a progress coordinate that monitors the slowest relevant motion(s) such that faster motions will “go along for the ride.” 
 The efficiency of generating pathways is tightly coupled to the choice of progress coordinate, along with how you choose to divide up that coordinate into bins. 
 For the molecular association process involving the Na\textsuperscript{+} and Cl\textsuperscript{-} ions, a logical choice of progress coordinate would simply be the distance between the two ions, assuming that the surrounding solvent molecules respond relatively quickly to the positions of the ions. 
 In other words, we can measure the simulation’s “progress” by how close the ions are to each other in a particular trajectory. 
@@ -728,9 +727,9 @@ This will turn out to be a good choice for our system, but for systems in which 
 
 Now that we have chosen a progress coordinate, we will need to consider our binning scheme. 
 Imagine a space that contains all of the possible values of our progress coordinate. 
-A good place to start is to perhaps define our progress coordinate as ranging from your initial state (basis state) to the initial definition of your target state and divide up this coordinate into 1-\AA{} wide bins. 
-One way to obtain an initial definition of the target state for the Na\textsuperscript{+}/Cl\textsuperscript{-} association process is to subject a model of the associated Na\textsuperscript{+} and Cl\textsuperscript{-} ions to energy minimization using the same force field that will be used during the WE simulation and calculate the resulting distance between the ions using \verb|cpptraj|. 
-This distance ended up being 2.6124 \AA{}, so we will set 2.60 \AA{} as our target state progress coordinate value. 
+A good place to start is to perhaps define our progress coordinate as ranging from your initial state (basis state) to a preliminary definition of your target state and divide up this coordinate into 1-\AA{} wide bins. 
+One way to obtain a preliminary definition of the target state for the Na\textsuperscript{+}/Cl\textsuperscript{-} association process is to subject a model of the associated Na\textsuperscript{+} and Cl\textsuperscript{-} ions to energy minimization using the same force field that will be used during the WE simulation and calculate the resulting distance between the ions using \verb|cpptraj|. 
+This distance ended up being 2.6124 \AA{}, so we will set 2.60 \AA{} as our preliminary definition of the target state. 
 We recommend choosing the most strict definition possible for the target state for the recycling of trajectories in a steady state WE simulation to enable the use of more lenient definitions after the completion of the simulation. 
 Make sure to add this number to \verb|tstate.file| in the main simulation directory, where your steady-state target state definition should always be placed.
 
@@ -748,7 +747,7 @@ Here is the preliminary binning scheme we will employ, which is defined in the \
 
 \verb|10.0, 11.0, 12.0, 13.0, 14.0, 15.0, ‘inf’]|
         	 
-Notice how we start at 15 \AA{} (a little bit beyond our initial value of 12 \AA) and increment by ones, but as we get closer to our initial state of 2.60 \AA, we start incrementing more finely. 
+Notice how we start at 15 \AA{} (a little bit beyond our initial value of 12 \AA) and increment by ones, but as we get closer to our preliminary state of 2.60 \AA, we start incrementing more finely. 
 This finer binning will help to collect probability closer to our target state and promote more binding events.
 
 \textbf{Other WE Parameters.} The following WE parameters are discussed along with where they are specified in the parameter files. 
@@ -845,7 +844,7 @@ Since we only need to designate the bound and unbound states here, we define thr
  
 \verb|[0.0, 2.6, 10.0, ‘inf’]|
  
-The way that state definitions work is that you provide a coordinate in the configurational space and whichever analysis bin that coordinate is in becomes that state. 
+The way that state definitions work is that you provide a progress coordinate in the configurational space and whichever analysis bin that coordinate is in becomes that state. 
 For instance, our bound state definition is given by \verb|[0]|, so whichever bin above that the value 0 falls into will be our “bound” state. 
 This is the bin from 0 to 2.6. 
 The same goes for the unbound state (10.0 to infinity). 
@@ -956,7 +955,7 @@ In the \verb|md.in| file, it should be specified that the trajectory segment wil
 This signals WESTPA to run an equilibrium WE simulation in which we do not have a set target state. 
 This is a good option when the goal of your process is to generate as many configurations as possible and you have no set target state in mind.
 
-\textbf{Progress Coordinate, Binning Scheme and $\tau$ Value.} To extensively sample the conformations of the peptide, we might define a progress coordinate that monitors the extent of “unfoldedness” in the peptide using the RMSD of a given conformation from the initial structure. 
+\textbf{Progress Coordinate, Binning Scheme and $\pmb{\tau}$ Value.} To extensively sample the conformations of the peptide, we might define a progress coordinate that monitors the extent of “unfoldedness” in the peptide using the RMSD of a given conformation from the initial structure. 
 However, RMSD cannot differentiate among conformations that have the same large RMSD values. 
 To further differentiate between such conformations, we can include another orthogonal measure of unfoldedness such as the end-to-end distance of the peptide. 
 
@@ -1005,7 +1004,7 @@ This can be treated analogously to the pcoord value and \verb|WEST_PCORD_RETURN|
 \subsubsection{Initializing and Running the WE Simulation}
 
 Make sure that your \verb|get_pcoord.sh| and \verb|runseg.sh| files are calculating the RMSD and end-to-end distance and returning these values to \verb|WEST_PCOORD_RETURN|. 
-The \verb|get_pcoord.sh| script will calculate the initial progress coordinates using AmberTools’ \verb|cpptraj| program from within the script, as opposed to reading the value from an external file as in the beginner tutorial.
+The \verb|get_pcoord.sh| script will calculate the initial progress coordinates using AmberTools’ \verb|cpptraj| program from within the script, as opposed to reading the value from an external file as in the Basic Tutorial.
 The \verb|runseg.sh| uses AmberTools’ \verb|sander| program for dynamics propagation and does so within the script.
 
 \subsubsection{Monitoring the WE Simulation (10 Iterations)}
@@ -1047,20 +1046,20 @@ Re-start your simulation by running the \verb|run.sh| script again and the simul
 At the start of the next iteration, the new bins will have been implemented.  
 
 In our case, I would like to focus sampling on higher RMSD values (3-4 \AA) instead of those \textasciitilde 1-2 \AA. 
-To do this, I will collapse the bins from 0 to 1.8 and define some more bins past 10:
+To do this, I will collapse the bins from 0 to 1.8 \AA{} and define some more bins past 10 \AA:
 
 \verb|[0.0, 1.8, 2.2, 2.6, 3.0, 3.5, 4.0, 5.0, 6.0,|
 
 \verb| 7.0, 8.0, 9.0, 10.0, 11, 12, 14, 16, 18, 20, ‘inf’]|
 
-For the end-to-end distance, I will add more bins for the lower distances and collapse bins over 26. 
-We would normally want to keep these bins over 26 but having fewer will shorten the runtime of this tutorial.
+For the end-to-end distance, I will add more bins for the lower distances and collapse bins over 26 \AA. 
+We would normally want to keep these bins over 26 \AA{} but having fewer will shorten the runtime of this tutorial.
 
 \verb|[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21,|
 
 \verb| 22, 23, 24, 25, 26, ‘inf’]|
 
-The reason we eliminated the initial 0.5 spacings is that this degree of freedom is readily explored in the system.
+The reason we eliminated the initial 0.5 \AA{} spacings is that this degree of freedom is readily explored in the system.
 
 \subsubsection{Monitoring the WE Simulation (40 Iterations)}
 
@@ -1077,13 +1076,13 @@ The completed H5 file is included in \verb|for_analysis/| for your convenience.
 \includegraphics[width=\linewidth]{Figure7B.pdf}
 \end{subfigure}
 \caption{Probability distributions for each of the two progress coordinate dimensions versus WE iteration. 
-The simulation was re-analyzed after 40 total WE iterations}
+The simulation was re-analyzed after 40 WE iterations}
 \label{fig:view}
 \end{figure}
 %%%%%%%%
 
 The effects of the bin-modifications can clearly be seen in the case of the end-to-end distribution. 
-No more trajectories with an end-to-end distance >30 can be seen after iteration 10, a result of the choice not to bin over 26 in that dimension.
+No more trajectories with an end-to-end distance >30 \AA{} can be seen after iteration 10, a result of the choice not to bin over 26 \AA{} in that dimension.
 
 The end-to-end distance seems to have reached 2-3 \AA{} around iteration 20. 
 The RMSD plateaued a bit from iterations 20-30 but then proceeded to values around 7 \AA.  
@@ -1134,8 +1133,9 @@ Specific learning objectives include:
  
 \textbf{Computational Requirements.} We note that significantly more computing time is required for the folding simulations to yield converged rate constants and hence we suggest the user should start with the unfolding simulations. 
 In particular, the WE unfolding simulation required \textasciitilde 53 hours for 1000 iterations on 32 CPU cores of 2.6 GHz Intel Xeon processors (\textasciitilde 5 GB of disk space) while the WE folding simulation required \textasciitilde 8 days for 10,000 iterations (200 ns of molecular time) using the same resource (\textasciitilde 50 GB of disk space).
-To become familiar with setting up and running the WE simulations, the users can carry out several iterations.  Also, the brute-force simulation described below can be performed for tens of ns, as we benchmarked this system to produce ~150 ns per day on one of the above-mentioned CPUs. Output files for 1000 iterations of the WE unfolding and 10000 iterations of the WE folding simulations (as well as for 4 us of the brute-force simulation) can be found in the corresponding subdirectories. These files should be used for the analysis procedures outlined below.
-This tutorial uses AmberTools19’s \verb|sander| package for dynamics propagation and the  \verb|cpptraj| package for progress coordinate calculations (\url{http://ambermd.org/AmberTools.php}). AmberTools is available free of charge.
+To become familiar with setting up and running the WE simulations, the users can carry out several iterations.  Also, the brute-force simulation described below can be performed for tens of ns, as we benchmarked this system to produce \textasciitilde 150 ns per day on one of the above-mentioned CPUs. Output files for 1000 iterations of the WE unfolding and 10000 iterations of the WE folding simulations (as well as for 4 us of the brute-force simulation) can be found in the corresponding subdirectories. These files should be used for the analysis procedures outlined below.
+This tutorial uses AmberTools19’s \verb|sander| package for dynamics propagation and the  \verb|cpptraj| package for progress coordinate calculations (\url{http://ambermd.org/AmberTools.php}). 
+AmberTools is available free of charge.
 
 \textbf{The System.} The chignolin mini-protein with the sequence GYDPETGTWG forms a $\beta$-hairpin and folds/unfolds on a timescale that is accessible to brute force simulations, which provide a reference data set for comparison with WESTPA results. 
 The folded chignolin structure (PDB code: 1UAO, \citep{Honda2004}), serves as the starting structure for both the brute-force and WE unfolding simulations. 
@@ -1184,7 +1184,7 @@ The user can run the following to obtain the MFPTs for both the folding and unfo
 
 The command-line arguments are the RMSD data file, time interval at which the RMSD values are calculated in seconds, and threshold RMSD values for the folded and unfolded states in Angstroms. 
 The rate constant of unfolding is estimated to be 0.13 x 108 s\textsuperscript{-1} (confidence interval: 0.09 x 108 s\textsuperscript{-1} – 0.18 x 108 s\textsuperscript{-1}) and that of folding is estimated to be 0.71 x 107 s\textsuperscript{-1} (confidence interval: 0.44 x 107 s\textsuperscript{-1} – 1.24 x 107 s\textsuperscript{-1}). 
-Confidence intervals are derived from a Bayesian bootstrapping procedure [Mostofian-2019]. 
+Confidence intervals are derived from a Bayesian bootstrapping procedure \citep{Mostofian2019}. 
 
 \subsubsection{Using WESTPA}
 
@@ -1201,7 +1201,7 @@ WE simulations of the folding process will be started from an unfolded conformat
  
 \textbf{Equilibrium vs Steady State WE.} Here we will run separate steady state WE simulations of the folding and unfolding processes, defining a target state (\verb|TSTATE_ARGS|) in the \verb|init.sh| files.
 
-\textbf{Progress Coordinate, Binning Scheme and $\tau$ value.} As mentioned above, we will use a one-dimensional progress coordinate consisting of the C\textsubscript{$\alpha$} RMSD from the folded structure of chignolin. 
+\textbf{Progress Coordinate, Binning Scheme and $\pmb{\tau}$ value.} As mentioned above, we will use a one-dimensional progress coordinate consisting of the C\textsubscript{$\alpha$} RMSD from the folded structure of chignolin. 
 Although the RMSD with respect to a single reference structure may not be an ideal coordinate for distinguishing between  various conformation, it proves sufficient for our example. 
 Folded and unfolded states are defined based on maximum and minimum RMSD values, respectively, that have been sampled by the above brute force simulations. 
 We will use a bin spacing  of 0.2 \AA{} and a $\tau$ value of 20 ps. 
@@ -1282,7 +1282,7 @@ Such steady states trajectories enable  the direct computation of rate constants
 
 For many biomolecular systems, it can be difficult to capture all of the slow motions in one or two collective variables. 
 This can hinder sampling of the events of interest. 
-The WExplore algorithm was developed to perform weighted ensemble sampling in a many-dimensional space by using a hierarchical binning scheme of Voronoi polyhedra. 
+The WExplore algorithm was developed to perform WE sampling in a many-dimensional space by using a hierarchical binning scheme of Voronoi polyhedra. 
 This allows a user to broadly explore the dynamics of their system of interest along many dimensions, starting from only a single initial structure.
 
 The key quantity to enable this is a distance metric: a way of measuring the distance between two trajectories at a given point in time. 
@@ -1348,7 +1348,7 @@ If this runs without an import error, then you are ready to proceed to the next 
 
 \subsubsection{Preparing the Simulation}
 
-\textbf{The System.} This tutorial will use a simple ligand-binding test system: the dissociation of a K\textsuperscript{+} ion from the 18-Crown-6 Ether molecule (Figure 12), as studied previously \citep{Zwier2011}. 
+\textbf{The System.} This tutorial will use a simple ligand-binding test system: the dissociation of a K\textsuperscript{+} ion from the 18-crown-6 ether molecule (Figure 12), as studied previously \citep{Zwier2011}. 
 The goal is to efficiently sample the dissociation of the complex. 
 This is reminiscent of applications of WExplore to more difficult ligand dissociation problems, such as the unbinding of the TPPU ligand from soluble epoxide hydrolase, a process with a mean first passage time of 11 minutes \citep{Lotz2018}.
 
@@ -1367,7 +1367,7 @@ The information needed to calculate these distances is the x, y and z positions 
 The first step to assign a walker to a region, then, is to extract this data from the simulation. 
 This is done by a familiar script: \verb|get_pcoord.sh|.
 
-The \verb|get_pcoord.sh| script included in the tutorial repository uses a series of BASH commands to align a crown ether molecule to a reference structure (named \verb|bound_state.tpr|), and then extracts only the lines that contain the ligand atoms, saving them in the file indicated by the \verb|WEST_PCOORD_RETURN| environment variable. 
+The \verb|get_pcoord.sh| script included in the tutorial repository uses a series of bash commands to align a crown ether molecule to a reference structure (named \verb|bound_state.tpr|), and then extracts only the lines that contain the ligand atoms, saving them in the file indicated by the \verb|WEST_PCOORD_RETURN| environment variable. 
 This data is then processed by the \verb|pcoord_loader| function in the \verb|system.py| file, where the x, y and z data are collected from columns 5, 6 and 7 of the PDB-formatted file. 
 
 This pipeline is rather crude, but effective. 
@@ -1377,7 +1377,7 @@ For instance, one could avoid PDB files all together, and load final structures 
 The next step is to define a function that returns the distance between two pcoord vectors. 
 This is typically a Euclidean distance, but can be defined in an arbitrary fashion. 
 It need not be differentiable, or even continuous, to be effective in a WExplore simulation. 
-The distance function is defined by \verb|eucl_dist| in \verb|system.py| and is passed as an argument to the \verb|WExploreBinMapper| function upon initialization of a System object.
+The distance function is defined by \verb|eucl_dist| in \verb|system.py| and is passed as an argument to the \verb|WExploreBinMapper| function upon initialization of a system object.
 
 \textbf{Setting parameters.} The set of WExplore-specific parameters were discussed above in Section 3.1. 
 Most of these are set in the \verb|system.py| file. The sizes of the hierarchical Voronoi polyhedra are set using a list, passed to the \verb|d_cut| argument of the \verb|WExploreBinMapper| function. 
@@ -1456,7 +1456,7 @@ The included Python script (\verb|WExplore_analysis.py|) shows how the coordinat
 
 Users should now have everything they need to use the WExplore resampling algorithm on their own system of interest.  
 WExplore is a powerful way to generate heterogeneous sampling on energy landscapes that are both rough and high-dimensional. 
-The ability to write your own distance metric using tools in python opens up many possibilities. 
+The ability to write your own distance metric using tools in Python opens up many possibilities. 
 For example, a number of dimension reduction tools in sklearn could be easily imported and used to automatically identify a space of collective variables.  
 
 \subsection{Advanced Tutorial 3: Analysis Tools}
@@ -1585,7 +1585,7 @@ When you create a new Jupyter notebook, there are some basic Python commands tha
 \verb|w.interface = 'matplotlib’|
 
 The Python kernel must be launched with the use of \verb|w_jupyter|, or otherwise, the \verb|$PYTHON_PATH| variable must be set to include the WESTPA directories. 
-The command \verb|w_env|, which ships with WESTPA, is responsible for setting environment variables and can be used with the jupyter notebook command to ensure \verb|w_ipa| is importable.
+The command \verb|w_env|, which ships with WESTPA, is responsible for setting environment variables and can be used with the Jupyter notebook command to ensure \verb|w_ipa| is importable.
 
 All commands are applicable from both the command line and Jupyter notebook interface; if plotting functions are called from the command line, the plot will appear within the console (it can be configured to use matplotlib if desired; this requires an active, available X session).
 
@@ -1617,7 +1617,7 @@ You can change the iteration by using the following command:
 
 \verb|$ w.iteration = 39|
 
-At any time, we have three iteration objects available in the object ‘\verb|w|’: current, past, future. 
+At any time, we have three iteration objects available in the object \verb|w|: current, past, future. 
 The past and future datasets are keyed to the parents and children of the segments in the current dataset. 
 For instance, if you are analyzing segment 200 in the current iteration and wish to analyze the parent segment it came from, you could access the two datasets using the following iteration objects:
 
@@ -1659,7 +1659,7 @@ In this WE simulation, each trajectory contains 101 timepoints.
 Therefore, the \verb|maxweight| segment (seg\_id 177) in iteration 49 has (101,2) pcoord values, 101 auxdata values, and it can switch bins and states 101 times. 
 You can see this by running \verb|w.current.maxweight|.
  
-The \verb|auxdata| dataset is unique in that the simulations can contain any number of auxiliary datasets with any unique name. 
+The auxdata dataset is unique in that the simulations can contain any number of auxiliary datasets with any unique name. 
 Here, they are returned as a dictionary where the key is the dataset name defined in \verb|west.cfg| and the value is a numpy array containing the actual dataset.
 
 Segment 177 above was in state 1 during the entire iteration. 
@@ -1717,7 +1717,9 @@ When the plotting function is called via the CLI, a rough estimate of how the tr
 The \verb|w.current| iteration object contains information about the rate constants that were calculated in the active analysis scheme. 
 To view an array containing the rate constants along with the upper and lower confidence intervals, run the following (do not forget about tab completion): 
 
-\verb|$ w.current.direct.rate_evolution| OR \verb|$ w.current.rate_evolution.direct|
+\verb|$ w.current.direct.rate_evolution| OR 
+
+\verb|$ w.current.rate_evolution.direct|
 
 To view a plot of their evolution, run the following:
 
@@ -1728,7 +1730,7 @@ The \verb|w_ipa| tool displays the upper and lower confidence intervals on the p
 \subsubsection{Visualization of WE Datasets}
 
 In addition to generating probability distributions as a function of the progress coordinate (or other observables of interest), it can be helpful to examine movies of how the distributions evolve with time. 
-Such movies can be used to determine the optimal number of trajectories/bin in a particular region of the progress coordinate by tracking how the probability distribution evolves with the number of trajectories that region. 
+Such movies can be used to determine the optimal number of trajectories per bin in a particular region of the progress coordinate by tracking how the probability distribution evolves with the number of trajectories that region. 
 
 \textbf{Learning Objectives.} The specific learning objectives of this tutorial are:
 \begin{enumerate}
@@ -1761,7 +1763,7 @@ Two representative, continuous trajectories that originate from distinct initial
 
 \section{Author Contributions}
 
-AT Bogetti, B Mostofian, A Dickson, AJ Pratt, AS Saglam, PO Harrison, M Dudek, PA Torrillo, AJ DeGrave, and U Adhikari developed and wrote the tutorials; the primary author of each tutorial is designated as a co-first author of the overall manuscript and listed in the order in which the tutorials appear in the manuscript. LT Chong and DM Zuckerman provided guidance for tutorial development. 
+AT Bogetti, B Mostofian, A Dickson, AJ Pratt, AS Saglam, PO Harrison, JL Adelman, M Dudek, PA Torrillo, AJ DeGrave, and U Adhikari developed and wrote the tutorials; the primary author of each tutorial is designated as a co-first author of the overall manuscript and listed in the order in which the tutorials appear in the manuscript. LT Chong and DM Zuckerman provided guidance for tutorial development. 
 AT Bogetti, LT Chong, DM Zuckerman, AJ Pratt, AS Saglam, B Mostofian, and MC Zwier wrote the introductory sections leading up to the tutorials. 
 
 \section{Other Contributions}
