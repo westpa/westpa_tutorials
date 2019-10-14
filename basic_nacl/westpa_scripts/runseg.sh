@@ -12,12 +12,12 @@ cd $WEST_CURRENT_SEG_DATA_REF
 ln -sv $WEST_SIM_ROOT/common_files/bstate.pdb .
 
 if [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_CONTINUES" ]; then
-  ln -sv $WEST_PARENT_DATA_REF/seg.chk ./parent.chk
+  ln -sv $WEST_PARENT_DATA_REF/seg.xml ./parent.xml
 elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
-  ln -sv $WEST_PARENT_DATA_REF ./parent.chk
+  ln -sv $WEST_PARENT_DATA_REF ./parent.xml
 fi
 
-# Run Dynamics with OpenMM
+# Run the dynamics with OpenMM
 python $WEST_SIM_ROOT/common_files/nacl_prod.py
 
 #Calculate pcoord with MDAnalysis
@@ -25,4 +25,4 @@ python $WEST_SIM_ROOT/common_files/get_distance.py
 cat dist.dat > $WEST_PCOORD_RETURN
 
 # Clean up
-rm -f parent.chk bstate.pdb dist.dat
+rm -f parent.xml bstate.pdb dist.dat
