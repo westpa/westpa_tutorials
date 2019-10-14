@@ -8,22 +8,22 @@ classification.
 
 *Please note: in order to successfully complete this tutorial, users will have to create a custom conda environment containing WESTPA, OpenMM and MDTraj.  Please see the relevant section on the [installation page](https://github.com/westpa/westpa/wiki/Installing-WESTPA) for how to do this.*
 
-*Na+/Cl- molecular association
+* Na+/Cl- molecular association (OpenMM 7.4, Amber 18 CPU, Amber 18 GPU)
 
 ## Intermediate tutorial
 
-*P53 peptide conformational sampling
+* P53 peptide conformational sampling (Amber 18)
 
 ## Advanced tutorials
 
-*Chignolin protein folding
+* Chignolin protein folding (Amber 18)
 
-*WExplore K+ 18-crown-6-ether association
+* WExplore K+ 18-crown-6-ether association (GROMACS 2016.2)
 
 ## Analysis tutorials
 
-*Calculating progress coordinates using MDAnalysis/MDTraj
+* Calculating progress coordinates using MDAnalysis/MDTraj
 
-*The w\_ipa suite of analysis tools
+* The w\_ipa suite of analysis tools
 
-*Dataset visualization and movie-making
+* Dataset visualization and movie-making
