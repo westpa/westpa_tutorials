@@ -4,7 +4,7 @@ all files necessary for completing that tutorial. Programs such as WESTPA, Amber
 installed by the user and are not provided herein. The following is a list of all tutorials with their 
 classification.
 
-## Beginner tutorial
+## Basic tutorial
 
 Na+/Cl- molecular association
 
