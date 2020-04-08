@@ -1875,9 +1875,10 @@ The resulting series of conformations can then be visualized using a software pa
 \end{enumerate}
 \item \textbf{Segment implementation (}\verb|runseg.sh|\textbf{)}
 \begin{enumerate}
-\item Ensure that the progress coordinate is being calculated correctly by manually running a single dynamics segment of length $/tau$ for a single trajectory walker. 
+\item Ensure that the progress coordinate is being calculated correctly by manually running a single dynamics segment of length $\tau$ for a single trajectory walker. 
 Check that your analysis pipeline works using the output from the single dynamics segment. 
 \item Are you feeding the information (e.g., coordinates, velocities) that is required for continuing trajectories? 
+\item Are you imaging the trajectory before calculating the progress coordinate?  Or equivalently using a function that can image your trajectory on-the-fly?
 \item Check the \verb|seg_log| file to further ensure correct calculation of the progress coordinate. 
 \item Ensure you are saving everything you might need to restart your simulation later on, including random seeds for stochastic dynamics as auxiliary data in the H5 file. 
 \end{enumerate}
