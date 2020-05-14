@@ -1,5 +1,5 @@
 # Basic WESTPA tutorial: Na+ Cl- association
-This turorial is meant to introduce new users to the WESTPA software for running Weighted Ensemble (WE) simulations.
+This tutorial is meant to introduce new users to the WESTPA software for running Weighted Ensemble (WE) simulations.
 
 ## Tutorial files
 
