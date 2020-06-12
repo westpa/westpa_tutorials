@@ -426,7 +426,8 @@ Usually, however, detailed logging of any errors is available in the \verb|seg_l
 View the segment log for a particular segment to see if the dynamics are completing successfully and that the progress coordinate (and auxdata) values are being calculated and passed to the appropriate variables (such as \verb|WEST_PCOORD_RETURN|).
 
 If the dynamics fail to start, copy all necessary input files into an empty directory and run the dynamics manually. 
-If no errors appear, make sure that your progress coordinate consists of the proper number of datapoints (as specified in the \verb|west.cfg| file). 
+If no errors appear, make sure that your progress coordinate consists of the proper number of datapoints (as specified in the \verb|west.cfg| file). Also remember that you must include the parent coordinate file as your first data point when storing the progress coordinate data. This will ensure that the analysis tools work properly.
+
 This is determined by the frequency at which the progress coordinate is being calculated. 
 For example, if WESTPA expects 50 progress coordinate values per $\tau$ and only receives 10 values, the simulation will fail after the first WE iteration. 
 Check the dynamics input file (\verb|md.in| in the Basic and Intermediate tutorials) to make sure that the coordinates of your system are being saved at a frequency that matches the number of specified progress coordinate values.
@@ -1878,6 +1879,7 @@ The resulting series of conformations can then be visualized using a software pa
 \item Ensure that the progress coordinate is being calculated correctly by manually running a single dynamics segment of length $\tau$ for a single trajectory walker. 
 Check that your analysis pipeline works using the output from the single dynamics segment. 
 \item Are you feeding the information (e.g., coordinates, velocities) that is required for continuing trajectories? 
+\item Are you including the parent coordinate file at the beginning of your analysis?
 \item Are you imaging the trajectory before calculating the progress coordinate?  Or equivalently using a function that can image your trajectory on-the-fly?
 \item Check the \verb|seg_log| file to further ensure correct calculation of the progress coordinate. 
 \item Ensure you are saving everything you might need to restart your simulation later on, including random seeds for stochastic dynamics as auxiliary data in the H5 file. 
