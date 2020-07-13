@@ -18,5 +18,5 @@
   ntwr      = 2500,
   ioutfm    = 1,
   ntwx      = 20,
-  iwrap     = 1,
+  iwrap     = 0,
 &end
