@@ -14,13 +14,6 @@ export LD_LIBRARY_PATH=/opt/packages/cuda/8.0/lib64:$LD_LIBRARY_PATH
 export NODELOC=$LOCAL
 export USE_LOCAL_SCRATCH=1
 
-# Inform WEST where to find Python and our other scripts where to find WEST
-export WEST_PYTHON=$(which python2.7)
-if [[ -z "$WEST_ROOT" ]]; then
-    echo "Must set environ variable WEST_ROOT"
-    exit
-fi
-
 # Explicitly name our simulation root directory
 if [[ -z "$WEST_SIM_ROOT" ]]; then
     # The way we're calling this, it's $SLURM_SUBMIT_DIR, which is fine.
