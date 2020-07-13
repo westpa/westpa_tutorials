@@ -6,18 +6,9 @@ module purge
 module load intel/2017.3.196 amber/18
 module unload python
 
-export WEST_PYTHON=($which python2.7)
-
 # This is our local scratch, where we'll store files during the dynamics.
 export NODELOC=$LOCAL
 export USE_LOCAL_SCRATCH=1
-
-# Inform WEST where to find Python and our other scripts where to find WEST
-export WEST_PYTHON=($which python2.7)
-if [[ -z "$WEST_ROOT" ]]; then
-    echo "Must set environ variable WEST_ROOT"
-    exit
-fi
 
 # Explicitly name our simulation root directory
 if [[ -z "$WEST_SIM_ROOT" ]]; then

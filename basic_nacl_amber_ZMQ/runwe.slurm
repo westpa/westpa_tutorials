@@ -10,7 +10,6 @@
 module purge
 module load intel/2017.3.196 amber/18
 module unload python
-export WEST_PYTHON=($which python2.7)
 
 set -x
 cd $SLURM_SUBMIT_DIR
@@ -24,7 +23,7 @@ SERVER_INFO=$WEST_SIM_ROOT/west_zmq_info-$SLURM_JOBID.json
 # This doesn't start up the multiple ones.  That's going to be okay for testing...
 # start server
 # NEEDS TO BE MODIFIED
-$WEST_ROOT/bin/w_run --work-manager=zmq --n-workers=1 --zmq-mode=master --zmq-write-host-info=$SERVER_INFO --zmq-comm-mode=tcp &> west-$SLURM_JOBID.log &
+w_run --work-manager=zmq --n-workers=1 --zmq-mode=master --zmq-write-host-info=$SERVER_INFO --zmq-comm-mode=tcp &> west-$SLURM_JOBID.log &
 
 # wait on host info file up to one minute
 for ((n=0; n<60; n++)); do

@@ -13,6 +13,6 @@ echo "current directory is $PWD"
 echo "environment is: "
 env | sort
 # Bit more complicated than this...
-$WEST_ROOT/bin/w_run "$@" &> west-$SLURM_NODENAME-node.log
+w_run "$@" &> west-$SLURM_NODENAME-node.log
 
 echo "Shutting down.  Hopefully this was on purpose?"
