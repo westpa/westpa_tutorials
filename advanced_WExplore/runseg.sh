@@ -36,11 +36,12 @@ function cleanup() {
 trap cleanup EXIT
 
 # Set up the run
-$STAGEIN $WEST_SIM_ROOT/{$TOP,$NDX,*.mdp,*.itp,$REF} .
+$STAGEIN $WEST_SIM_ROOT/{$TOP,$NDX,*.itp,$REF} .
 
 case $WEST_CURRENT_SEG_INITPOINT_TYPE in
     SEG_INITPOINT_CONTINUES)
         # A continuation from a prior segment
+        sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/md.mdp > md.mdp
         $STAGEIN $WEST_PARENT_DATA_REF/seg.gro ./parent.gro
         $STAGEIN $WEST_PARENT_DATA_REF/seg.trr ./parent.trr
         $STAGEIN $WEST_PARENT_DATA_REF/seg.edr ./parent.edr
@@ -51,6 +52,7 @@ case $WEST_CURRENT_SEG_INITPOINT_TYPE in
     SEG_INITPOINT_NEWTRAJ)
         # Initiation of a new trajectory; $WEST_PARENT_DATA_REF contains the reference to the
         # appropriate basis state or generated initial state
+        sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/md.mdp > md.mdp
         $STAGEIN $WEST_PARENT_DATA_REF.gro ./initial.gro
         $STAGEIN $WEST_PARENT_DATA_REF.trr ./initial.trr
         $STAGEIN $WEST_PARENT_DATA_REF.edr ./initial.edr
@@ -82,3 +84,4 @@ echo -e "4 \n" | $GMX trjconv    -f nojump.xtc  -s seg.tpr -n $NDX -o pcoord.pdb
 # pcoord loader to analyze the RMSD and go from there.
 echo "2 9" | $GMX trjconv -fit rot+trans -s bound_state.tpr -f pcoord.pdb -o pcoord_align.pdb
 cat pcoord_align.pdb | grep '^ATOM' | grep K\+ > $WEST_PCOORD_RETURN || exit 1
+rm md.mdp

@@ -18,4 +18,4 @@ rm initial_bin_struct.pdb initial_bin_struct_align.pdb
 
 BSTATE_ARGS="--bstates-from BASIS_STATES.single"
 
-$WEST_ROOT/bin/w_init $BSTATE_ARGS $TSTATE_ARGS --segs-per-state 1 --serial "$@"
+w_init $BSTATE_ARGS $TSTATE_ARGS --segs-per-state 1 --serial "$@"
