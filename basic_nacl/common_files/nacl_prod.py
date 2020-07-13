@@ -11,6 +11,7 @@ system = forcefield.createSystem(pdb.topology, nonbondedMethod=PME, nonbondedCut
                              constraints=HBonds)
 system.addForce(MonteCarloBarostat(1*bar, 300*kelvin))
 integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)
+integrator.setRandomNumberSeed(RAND)
 
 simulation = Simulation(pdb.topology, system, integrator)
 simulation.context.setPositions(pdb.positions)
