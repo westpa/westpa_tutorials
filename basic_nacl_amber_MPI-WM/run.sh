@@ -25,4 +25,4 @@ rm -f west.log
 
 # Run w_run
 mpirun -n $SLURM_NTASKS \
-          w_run --work-manager mpi "$@" &> west.log
+          w_run --work-manager=mpi "$@" &> west.log
