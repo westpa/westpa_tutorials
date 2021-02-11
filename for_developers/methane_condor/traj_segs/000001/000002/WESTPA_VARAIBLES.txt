@@ -1,4 +1,0 @@
-methane.top
-methane.ndx
-/tmp/tmpyE7YA6
-/tmp/tmp7YqyoU

@@ -1,341 +1,0 @@
-                         :-)  G  R  O  M  A  C  S  (-:
-
-                   Groningen Machine for Chemical Simulation
-
-                            :-)  VERSION 4.5.5  (-:
-
-        Written by Emile Apol, Rossen Apostolov, Herman J.C. Berendsen,
-      Aldert van Buuren, Pär Bjelkmar, Rudi van Drunen, Anton Feenstra, 
-        Gerrit Groenhof, Peter Kasson, Per Larsson, Pieter Meulenhoff, 
-           Teemu Murtola, Szilard Pall, Sander Pronk, Roland Schulz, 
-                Michael Shirts, Alfons Sijbers, Peter Tieleman,
-
-               Berk Hess, David van der Spoel, and Erik Lindahl.
-
-       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
-            Copyright (c) 2001-2010, The GROMACS development team at
-        Uppsala University & The Royal Institute of Technology, Sweden.
-            check out http://www.gromacs.org for more information.
-
-         This program is free software; you can redistribute it and/or
-          modify it under the terms of the GNU General Public License
-         as published by the Free Software Foundation; either version 2
-             of the License, or (at your option) any later version.
-
-                                :-)  mdrun  (-:
-
-Option     Filename  Type         Description
-------------------------------------------------------------
-  -s        seg.tpr  Input        Run input file: tpr tpb tpa
-  -o        seg.trr  Output       Full precision trajectory: trr trj cpt
-  -x        seg.xtc  Output, Opt! Compressed trajectory (portable xdr format)
--cpi      state.cpt  Input, Opt.  Checkpoint file
--cpo      state.cpt  Output, Opt. Checkpoint file
-  -c        seg.gro  Output       Structure file: gro g96 pdb etc.
-  -e        seg.edr  Output       Energy file
-  -g        seg.log  Output       Log file
--dhdl      dhdl.xvg  Output, Opt. xvgr/xmgr file
--field    field.xvg  Output, Opt. xvgr/xmgr file
--table    table.xvg  Input, Opt.  xvgr/xmgr file
--tablep  tablep.xvg  Input, Opt.  xvgr/xmgr file
--tableb   table.xvg  Input, Opt.  xvgr/xmgr file
--rerun    rerun.xtc  Input, Opt.  Trajectory: xtc trr trj gro g96 pdb cpt
--tpi        tpi.xvg  Output, Opt. xvgr/xmgr file
--tpid   tpidist.xvg  Output, Opt. xvgr/xmgr file
- -ei        sam.edi  Input, Opt.  ED sampling input
- -eo        sam.edo  Output, Opt. ED sampling output
-  -j       wham.gct  Input, Opt.  General coupling stuff
- -jo        bam.gct  Output, Opt. General coupling stuff
--ffout      gct.xvg  Output, Opt. xvgr/xmgr file
--devout   deviatie.xvg  Output, Opt. xvgr/xmgr file
--runav  runaver.xvg  Output, Opt. xvgr/xmgr file
- -px      pullx.xvg  Output, Opt. xvgr/xmgr file
- -pf      pullf.xvg  Output, Opt. xvgr/xmgr file
--mtx         nm.mtx  Output, Opt. Hessian matrix
- -dn     dipole.ndx  Output, Opt. Index file
--multidir    rundir  Input, Opt., Mult. Run directory
-
-Option       Type   Value   Description
-------------------------------------------------------
--[no]h       bool   no      Print help info and quit
--[no]version bool   no      Print version info and quit
--nice        int    0       Set the nicelevel
--deffnm      string         Set the default filename for all file options
--xvg         enum   xmgrace  xvg plot formatting: xmgrace, xmgr or none
--[no]pd      bool   no      Use particle decompostion
--dd          vector 0 0 0   Domain decomposition grid, 0 is optimize
--nt          int    1       Number of threads to start (0 is guess)
--npme        int    -1      Number of separate nodes to be used for PME, -1
-                            is guess
--ddorder     enum   interleave  DD node order: interleave, pp_pme or cartesian
--[no]ddcheck bool   yes     Check for all bonded interactions with DD
--rdd         real   0       The maximum distance for bonded interactions with
-                            DD (nm), 0 is determine from initial coordinates
--rcon        real   0       Maximum distance for P-LINCS (nm), 0 is estimate
--dlb         enum   auto    Dynamic load balancing (with DD): auto, no or yes
--dds         real   0.8     Minimum allowed dlb scaling of the DD cell size
--gcom        int    -1      Global communication frequency
--[no]v       bool   no      Be loud and noisy
--[no]compact bool   yes     Write a compact log file
--[no]seppot  bool   no      Write separate V and dVdl terms for each
-                            interaction type and node to the log file(s)
--pforce      real   -1      Print all forces larger than this (kJ/mol nm)
--[no]reprod  bool   no      Try to avoid optimizations that affect binary
-                            reproducibility
--cpt         real   15      Checkpoint interval (minutes)
--[no]cpnum   bool   no      Keep and number checkpoint files
--[no]append  bool   yes     Append to previous output files when continuing
-                            from checkpoint instead of adding the simulation
-                            part number to all file names
--maxh        real   -1      Terminate after 0.99 times this time (hours)
--multi       int    0       Do multiple simulations in parallel
--replex      int    0       Attempt replica exchange every # steps
--reseed      int    -1      Seed for replica exchange, -1 is generate a seed
--[no]ionize  bool   no      Do a simulation including the effect of an X-Ray
-                            bombardment on your system
-
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-starting mdrun '(CH4)2 GBSA'
-250 steps,      0.5 ps.
-
-Writing final coordinates.
-
-               NODE (s)   Real (s)      (%)
-       Time:      0.010      0.013     79.4
-               (Mnbf/s)   (MFlops)   (ns/day)  (hour/ns)
-Performance:      0.000    234.421   4337.280      0.006
-
-gcq#0: Thanx for Using GROMACS - Have a Nice Day
-
-                         :-)  G  R  O  M  A  C  S  (-:
-
-                   Groningen Machine for Chemical Simulation
-
-                            :-)  VERSION 4.5.5  (-:
-
-        Written by Emile Apol, Rossen Apostolov, Herman J.C. Berendsen,
-      Aldert van Buuren, Pär Bjelkmar, Rudi van Drunen, Anton Feenstra, 
-        Gerrit Groenhof, Peter Kasson, Per Larsson, Pieter Meulenhoff, 
-           Teemu Murtola, Szilard Pall, Sander Pronk, Roland Schulz, 
-                Michael Shirts, Alfons Sijbers, Peter Tieleman,
-
-               Berk Hess, David van der Spoel, and Erik Lindahl.
-
-       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
-            Copyright (c) 2001-2010, The GROMACS development team at
-        Uppsala University & The Royal Institute of Technology, Sweden.
-            check out http://www.gromacs.org for more information.
-
-         This program is free software; you can redistribute it and/or
-          modify it under the terms of the GNU General Public License
-         as published by the Free Software Foundation; either version 2
-             of the License, or (at your option) any later version.
-
-                                :-)  g_dist  (-:
-
-Option     Filename  Type         Description
-------------------------------------------------------------
-  -f        seg.xtc  Input        Trajectory: xtc trr trj gro g96 pdb cpt
-  -s        seg.tpr  Input        Run input file: tpr tpb tpa
-  -n    methane.ndx  Input, Opt!  Index file
-  -o       dist.xvg  Output, Opt. xvgr/xmgr file
- -lt   lifetime.xvg  Output, Opt. xvgr/xmgr file
-
-Option       Type   Value   Description
-------------------------------------------------------
--[no]h       bool   no      Print help info and quit
--[no]version bool   no      Print version info and quit
--nice        int    19      Set the nicelevel
--b           time   0       First frame (ps) to read from trajectory
--e           time   0       Last frame (ps) to read from trajectory
--dt          time   0       Only use frame when t MOD dt = first time (ps)
--xvg         enum   none    xvg plot formatting: xmgrace, xmgr or none
--dist        real   0       Print all atoms in group 2 closer than dist to
-                            the center of mass of group 1
-
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-Group     0 (         System) has    10 elements
-Group     1 (          Other) has    10 elements
-Group     2 (            CH4) has    10 elements
-Group     3 (          heavy) has     2 elements
-Group     4 (      hydrogens) has     8 elements
-Group     5 (            r_1) has     5 elements
-Group     6 (            r_2) has     5 elements
-Group     7 (            cm1) has     1 elements
-Group     8 (            cm2) has     1 elements
-Select a group: Select a group: Reading frame       0 time    0.000   Reading frame       1 time    0.010   Reading frame       2 time    0.020   Reading frame       3 time    0.030   Reading frame       4 time    0.040   Reading frame       5 time    0.050   Reading frame       6 time    0.060   Reading frame       7 time    0.070   Reading frame       8 time    0.080   Reading frame       9 time    0.090   Reading frame      10 time    0.100   Reading frame      11 time    0.110   Reading frame      12 time    0.120   Reading frame      13 time    0.130   Reading frame      14 time    0.140   Reading frame      15 time    0.150   Reading frame      16 time    0.160   Reading frame      17 time    0.170   Reading frame      18 time    0.180   Reading frame      19 time    0.190   Reading frame      20 time    0.200   Reading frame      30 time    0.300   Reading frame      40 time    0.400   Reading frame      50 time    0.500   Last frame         50 time    0.500   
-
-gcq#0: Thanx for Using GROMACS - Have a Nice Day
-
-                         :-)  G  R  O  M  A  C  S  (-:
-
-                   Groningen Machine for Chemical Simulation
-
-                            :-)  VERSION 4.5.5  (-:
-
-        Written by Emile Apol, Rossen Apostolov, Herman J.C. Berendsen,
-      Aldert van Buuren, Pär Bjelkmar, Rudi van Drunen, Anton Feenstra, 
-        Gerrit Groenhof, Peter Kasson, Per Larsson, Pieter Meulenhoff, 
-           Teemu Murtola, Szilard Pall, Sander Pronk, Roland Schulz, 
-                Michael Shirts, Alfons Sijbers, Peter Tieleman,
-
-               Berk Hess, David van der Spoel, and Erik Lindahl.
-
-       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
-            Copyright (c) 2001-2010, The GROMACS development team at
-        Uppsala University & The Royal Institute of Technology, Sweden.
-            check out http://www.gromacs.org for more information.
-
-         This program is free software; you can redistribute it and/or
-          modify it under the terms of the GNU General Public License
-         as published by the Free Software Foundation; either version 2
-             of the License, or (at your option) any later version.
-
-                                :-)  g_traj  (-:
-
-Option     Filename  Type         Description
-------------------------------------------------------------
-  -f        seg.xtc  Input        Trajectory: xtc trr trj gro g96 pdb cpt
-  -s        seg.tpr  Input        Structure+mass(db): tpr tpb tpa gro g96 pdb
-  -n    methane.ndx  Input, Opt!  Index file
- -ox     coord1.xvg  Output, Opt! xvgr/xmgr file
--oxt      coord.xtc  Output, Opt. Trajectory: xtc trr trj gro g96 pdb cpt
- -ov      veloc.xvg  Output, Opt. xvgr/xmgr file
- -of      force.xvg  Output, Opt. xvgr/xmgr file
- -ob        box.xvg  Output, Opt. xvgr/xmgr file
- -ot       temp.xvg  Output, Opt. xvgr/xmgr file
--ekt    ektrans.xvg  Output, Opt. xvgr/xmgr file
--ekr      ekrot.xvg  Output, Opt. xvgr/xmgr file
- -vd    veldist.xvg  Output, Opt. xvgr/xmgr file
- -cv      veloc.pdb  Output, Opt. Protein data bank file
- -cf      force.pdb  Output, Opt. Protein data bank file
- -av  all_veloc.xvg  Output, Opt. xvgr/xmgr file
- -af  all_force.xvg  Output, Opt. xvgr/xmgr file
-
-Option       Type   Value   Description
-------------------------------------------------------
--[no]h       bool   no      Print help info and quit
--[no]version bool   no      Print version info and quit
--nice        int    19      Set the nicelevel
--b           time   0       First frame (ps) to read from trajectory
--e           time   0       Last frame (ps) to read from trajectory
--dt          time   0       Only use frame when t MOD dt = first time (ps)
--tu          enum   ps      Time unit: fs, ps, ns, us, ms or s
--[no]w       bool   no      View output .xvg, .xpm, .eps and .pdb files
--xvg         enum   none    xvg plot formatting: xmgrace, xmgr or none
--[no]com     bool   no      Plot data for the com of each group
--[no]pbc     bool   no      Make molecules whole for COM
--[no]mol     bool   no      Index contains molecule numbers iso atom numbers
--[no]nojump  bool   no      Remove jumps of atoms across the box
--[no]x       bool   yes     Plot X-component
--[no]y       bool   yes     Plot Y-component
--[no]z       bool   yes     Plot Z-component
--ng          int    1       Number of groups to consider
--[no]len     bool   no      Plot vector length
--[no]fp      bool   yes     Full precision output
--bin         real   1       Binwidth for velocity histogram (nm/ps)
--ctime       real   -1      Use frame at this time for x in -cv and -cf
-                            instead of the average x
--scale       real   0       Scale factor for .pdb output, 0 is autoscale
-
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-Group     0 (         System) has    10 elements
-Group     1 (          Other) has    10 elements
-Group     2 (            CH4) has    10 elements
-Group     3 (          heavy) has     2 elements
-Group     4 (      hydrogens) has     8 elements
-Group     5 (            r_1) has     5 elements
-Group     6 (            r_2) has     5 elements
-Group     7 (            cm1) has     1 elements
-Group     8 (            cm2) has     1 elements
-Select a group: Reading frame       0 time    0.000   Reading frame       1 time    0.010   Reading frame       2 time    0.020   Reading frame       3 time    0.030   Reading frame       4 time    0.040   Reading frame       5 time    0.050   Reading frame       6 time    0.060   Reading frame       7 time    0.070   Reading frame       8 time    0.080   Reading frame       9 time    0.090   Reading frame      10 time    0.100   Reading frame      11 time    0.110   Reading frame      12 time    0.120   Reading frame      13 time    0.130   Reading frame      14 time    0.140   Reading frame      15 time    0.150   Reading frame      16 time    0.160   Reading frame      17 time    0.170   Reading frame      18 time    0.180   Reading frame      19 time    0.190   Reading frame      20 time    0.200   Reading frame      30 time    0.300   Reading frame      40 time    0.400   Reading frame      50 time    0.500   Last frame         50 time    0.500   
-
-gcq#0: Thanx for Using GROMACS - Have a Nice Day
-
-                         :-)  G  R  O  M  A  C  S  (-:
-
-                   Groningen Machine for Chemical Simulation
-
-                            :-)  VERSION 4.5.5  (-:
-
-        Written by Emile Apol, Rossen Apostolov, Herman J.C. Berendsen,
-      Aldert van Buuren, Pär Bjelkmar, Rudi van Drunen, Anton Feenstra, 
-        Gerrit Groenhof, Peter Kasson, Per Larsson, Pieter Meulenhoff, 
-           Teemu Murtola, Szilard Pall, Sander Pronk, Roland Schulz, 
-                Michael Shirts, Alfons Sijbers, Peter Tieleman,
-
-               Berk Hess, David van der Spoel, and Erik Lindahl.
-
-       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
-            Copyright (c) 2001-2010, The GROMACS development team at
-        Uppsala University & The Royal Institute of Technology, Sweden.
-            check out http://www.gromacs.org for more information.
-
-         This program is free software; you can redistribute it and/or
-          modify it under the terms of the GNU General Public License
-         as published by the Free Software Foundation; either version 2
-             of the License, or (at your option) any later version.
-
-                                :-)  g_traj  (-:
-
-Option     Filename  Type         Description
-------------------------------------------------------------
-  -f        seg.xtc  Input        Trajectory: xtc trr trj gro g96 pdb cpt
-  -s        seg.tpr  Input        Structure+mass(db): tpr tpb tpa gro g96 pdb
-  -n    methane.ndx  Input, Opt!  Index file
- -ox     coord2.xvg  Output, Opt! xvgr/xmgr file
--oxt      coord.xtc  Output, Opt. Trajectory: xtc trr trj gro g96 pdb cpt
- -ov      veloc.xvg  Output, Opt. xvgr/xmgr file
- -of      force.xvg  Output, Opt. xvgr/xmgr file
- -ob        box.xvg  Output, Opt. xvgr/xmgr file
- -ot       temp.xvg  Output, Opt. xvgr/xmgr file
--ekt    ektrans.xvg  Output, Opt. xvgr/xmgr file
--ekr      ekrot.xvg  Output, Opt. xvgr/xmgr file
- -vd    veldist.xvg  Output, Opt. xvgr/xmgr file
- -cv      veloc.pdb  Output, Opt. Protein data bank file
- -cf      force.pdb  Output, Opt. Protein data bank file
- -av  all_veloc.xvg  Output, Opt. xvgr/xmgr file
- -af  all_force.xvg  Output, Opt. xvgr/xmgr file
-
-Option       Type   Value   Description
-------------------------------------------------------
--[no]h       bool   no      Print help info and quit
--[no]version bool   no      Print version info and quit
--nice        int    19      Set the nicelevel
--b           time   0       First frame (ps) to read from trajectory
--e           time   0       Last frame (ps) to read from trajectory
--dt          time   0       Only use frame when t MOD dt = first time (ps)
--tu          enum   ps      Time unit: fs, ps, ns, us, ms or s
--[no]w       bool   no      View output .xvg, .xpm, .eps and .pdb files
--xvg         enum   none    xvg plot formatting: xmgrace, xmgr or none
--[no]com     bool   no      Plot data for the com of each group
--[no]pbc     bool   no      Make molecules whole for COM
--[no]mol     bool   no      Index contains molecule numbers iso atom numbers
--[no]nojump  bool   no      Remove jumps of atoms across the box
--[no]x       bool   yes     Plot X-component
--[no]y       bool   yes     Plot Y-component
--[no]z       bool   yes     Plot Z-component
--ng          int    1       Number of groups to consider
--[no]len     bool   no      Plot vector length
--[no]fp      bool   yes     Full precision output
--bin         real   1       Binwidth for velocity histogram (nm/ps)
--ctime       real   -1      Use frame at this time for x in -cv and -cf
-                            instead of the average x
--scale       real   0       Scale factor for .pdb output, 0 is autoscale
-
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-Reading file seg.tpr, VERSION 4.5.5 (single precision)
-Group     0 (         System) has    10 elements
-Group     1 (          Other) has    10 elements
-Group     2 (            CH4) has    10 elements
-Group     3 (          heavy) has     2 elements
-Group     4 (      hydrogens) has     8 elements
-Group     5 (            r_1) has     5 elements
-Group     6 (            r_2) has     5 elements
-Group     7 (            cm1) has     1 elements
-Group     8 (            cm2) has     1 elements
-Select a group: Reading frame       0 time    0.000   Reading frame       1 time    0.010   Reading frame       2 time    0.020   Reading frame       3 time    0.030   Reading frame       4 time    0.040   Reading frame       5 time    0.050   Reading frame       6 time    0.060   Reading frame       7 time    0.070   Reading frame       8 time    0.080   Reading frame       9 time    0.090   Reading frame      10 time    0.100   Reading frame      11 time    0.110   Reading frame      12 time    0.120   Reading frame      13 time    0.130   Reading frame      14 time    0.140   Reading frame      15 time    0.150   Reading frame      16 time    0.160   Reading frame      17 time    0.170   Reading frame      18 time    0.180   Reading frame      19 time    0.190   Reading frame      20 time    0.200   Reading frame      30 time    0.300   Reading frame      40 time    0.400   Reading frame      50 time    0.500   Last frame         50 time    0.500   
-
-gcq#0: Thanx for Using GROMACS - Have a Nice Day
-
