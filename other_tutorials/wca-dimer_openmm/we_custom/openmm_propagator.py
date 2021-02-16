@@ -1,4 +1,4 @@
-from __future__ import division, print_function; __metaclass__ = type
+# ; __metaclass__ = type
 import os
 import errno
 import random
@@ -129,14 +129,14 @@ class OpenMMPropagator(WESTPropagator):
 
     def propagate(self, segments):
 
-        platform_properties = {key: value for key, value in self.platform_properties.iteritems() if key.startswith(self.platform.getName())}
+        platform_properties = {key: value for key, value in self.platform_properties.items() if key.startswith(self.platform.getName())}
 
         try:
             process_id = os.environ['WM_PROCESS_INDEX']
             if self.platform.getName() == 'OpenCL':
                 platform_properties['OpenCLDeviceIndex'] = process_id
-            elif self.platform.getName() == 'CUDA':
-                platform_properties['CudaDeviceIndex'] = process_id
+            # elif self.platform.getName() == 'CUDA':
+            #     platform_properties['CudaDeviceIndex'] = process_id
             elif self.platform.getName() == 'CPU':
                 platform_properties['CpuThreads'] = '1'
         except KeyError:
@@ -199,7 +199,7 @@ class OpenMMPropagator(WESTPropagator):
                 velocities[0] = state.getVelocities(asNumpy=True)
 
             # Run dynamics
-            for istep in xrange(1, self.nblocks):
+            for istep in range(1, self.nblocks):
                 integrator.step(self.steps_per_write)
 
                 state = context.getState(getPositions=True, getVelocities=True)
