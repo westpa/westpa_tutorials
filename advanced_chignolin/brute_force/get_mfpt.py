@@ -10,7 +10,9 @@ from bootstrap import get_CI, get_CR
 #####################################
 
 if len(sys.argv) != 5 :
-   print "\n\nPLEASE, PROVIDE THE RMSD FILE, ITS TIME RESOLUTION (IN SECONDS), THE LOWER AND THE UPPER TARGET STATE RMSD VALUES AS COMMAND LINE ARGUMENTS, E.G.:\n\n\t'python get_mfpt.py  rmsd.dat  20e-12  0.5  4.0'\n\n\n"
+   print("\n\nPLEASE, PROVIDE THE RMSD FILE, ITS TIME RESOLUTION (IN SECONDS), "
+         "THE LOWER AND THE UPPER TARGET STATE RMSD VALUES AS COMMAND LINE "
+         "ARGUMENTS, E.G.:\n\n\t'python get_mfpt.py  rmsd.dat  20e-12  0.5  4.0'\n\n\n")
    sys.exit()
 else :
    FileIn = sys.argv[1]
@@ -98,10 +100,10 @@ for frame in states :
 
 # check the existence of passage times
 if len(PT_FU) == 0 :
-   print "WARNING: No F->U events observed!"
+   print("WARNING: No F->U events observed!")
    sys.exit()
 if len(PT_UF) == 0 :
-   print "WARNING: No U->F events observed!"
+   print("WARNING: No U->F events observed!")
    sys.exit() 
 
 
@@ -125,9 +127,9 @@ mfpt_UF = float(sum(PT_UF)) / len(PT_UF) * dt
 ######### PRINTING RESULTS ##########
 #####################################
 
-print "MFTS (in seconds):" 
-print "F-->U: mean = ", mfpt_FU, "\t", "confidence interval =  [", PT_FU_CRmin*dt, ",", PT_FU_CRmax*dt, "]"
-print "U-->F: mean = ", mfpt_UF, "\t", "confidence interval =  [", PT_UF_CRmin*dt, ",", PT_UF_CRmax*dt, "]"
+print("MFTS (in seconds):")
+print("F-->U: mean = ", mfpt_FU, "\t", "confidence interval =  [", PT_FU_CRmin*dt, ",", PT_FU_CRmax*dt, "]")
+print("U-->F: mean = ", mfpt_UF, "\t", "confidence interval =  [", PT_UF_CRmin*dt, ",", PT_UF_CRmax*dt, "]")
  
 #####################################
 
