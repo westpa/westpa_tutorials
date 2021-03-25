@@ -1,9 +1,8 @@
 from __future__ import division, print_function; __metaclass__ = type
 import os, sys, math, itertools
 import numpy as np
-import west
-from west import WESTSystem
-from westpa.binning import RectilinearBinMapper, RecursiveBinMapper, FuncBinMapper
+from westpa.core.systems import WESTSystem
+from westpa.core.binning import RectilinearBinMapper, RecursiveBinMapper, FuncBinMapper
 import westpa
 
 from westpa_wexplore import wexplore, wex_utils
