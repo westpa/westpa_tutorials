@@ -51,12 +51,12 @@ def calc_pcoord(refpath, toppath, mobpath, FORM):
 
     # Write RMSD to output file.
     if FORM == "RESTRT":
-	    # We only need the last value in the array.
-	    rmsd = numpy.array(rmsd[-1])
-	    # WESTPA expects a 1x1 array, so we must correct the shape if needed.
+        # We only need the last value in the array.
+        rmsd = numpy.array(rmsd[-1])
+        # WESTPA expects a 1x1 array, so we must correct the shape if needed.
         if rmsd.ndim == 0:
-	    rmsd.shape = (1,)
-        numpy.savetxt("rmsd.dat", rmsd)
+            rmsd.shape = (1,)
+            numpy.savetxt("rmsd.dat", rmsd)
     else:
         numpy.savetxt("rmsd.dat", rmsd)
 
