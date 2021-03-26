@@ -64,7 +64,7 @@ fi
 
 ############################## Run the dynamics ################################
 # Propagate segment using pmemd (or sander)
-pmemd -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
+$SANDER -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
           -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
 # Set the arguments for rmsd.py and call the script to calculate progress
