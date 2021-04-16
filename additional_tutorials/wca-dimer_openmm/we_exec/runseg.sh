@@ -37,7 +37,12 @@ case $WEST_CURRENT_SEG_INITPOINT_TYPE in
 esac
     
 
-# Propagate segment
+# Propagate segment in CPU
+# $WEST_PYTHON $OMM_APP -c initial.npz -s $SYS \
+#       -i $INTEGRATOR -d $WM_PROCESS_INDEX \
+#       -p CPU -w 250 -o seg -n 250 || exit 1
+
+# Propagate segment in GPU 
 $WEST_PYTHON $OMM_APP -c initial.npz -s $SYS \
        -i $INTEGRATOR -d $WM_PROCESS_INDEX \
        -p CUDA -w 250 -o seg -n 250 || exit 1

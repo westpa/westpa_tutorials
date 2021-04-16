@@ -13,4 +13,5 @@ mkdir seg_logs istates traj_segs
 
 BSTATE_ARGS="--bstate init_coords_a,0.8,init_coords_a.npz --bstate init_coords_b,0.2,init_coords_b.npz"
 
-$WEST_ROOT/bin/w_init $BSTATE_ARGS --segs-per-state 10 --work-manager=threads "$@"
+#$WEST_ROOT/bin/w_init $BSTATE_ARGS --segs-per-state 10 --work-manager=threads "$@"
+w_init $BSTATE_ARGS --segs-per-state 10 --work-manager=threads "$@"

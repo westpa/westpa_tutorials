@@ -1,8 +1,8 @@
 from __future__ import division, print_function; __metaclass__ = type
 import numpy as np
-import west
-from west import WESTSystem
-from westpa.binning import RectilinearBinMapper
+import westpa
+from westpa import WESTSystem
+from westpa.core.binning import RectilinearBinMapper
 
 import logging
 log = logging.getLogger(__name__)

@@ -1,14 +1,13 @@
-from __future__ import division, print_function; __metaclass__ = type
 import os
 import errno
 import random
 import time
 import glob
 import numpy as np
-import west
-from west.propagators import WESTPropagator
-from west import Segment
-from west.states import BasisState, InitialState
+import westpa
+from westpa.core.propagators import WESTPropagator
+from westpa.core import segment
+from westpa.core.states import BasisState, InitialState
 
 import simtk.openmm.openmm as openmm
 import simtk.unit as units
@@ -129,7 +128,7 @@ class OpenMMPropagator(WESTPropagator):
 
     def propagate(self, segments):
 
-        platform_properties = {key: value for key, value in self.platform_properties.iteritems() if key.startswith(self.platform.getName())}
+        platform_properties = {key: value for key, value in self.platform_properties.items() if key.startswith(self.platform.getName())}
 
         try:
             process_id = os.environ['WM_PROCESS_INDEX']
@@ -166,7 +165,7 @@ class OpenMMPropagator(WESTPropagator):
             velocities = np.empty((self.nblocks, self.mmsystem.getNumParticles(), 3))
 
             # Get initial coordinates and velocities from restarts or initial state
-            if segment.initpoint_type == Segment.SEG_INITPOINT_CONTINUES:
+            if segment.initpoint_type == segment.SEG_INITPOINT_CONTINUES:
                 # Get restart data
                 coordinates[0] = parent_coords[segment.parent_id]
                 velocities[0] = parent_velocs[segment.parent_id]
@@ -177,7 +176,7 @@ class OpenMMPropagator(WESTPropagator):
                 context.setPositions(initial_coords)
                 context.setVelocities(initial_velocs)
 
-            elif segment.initpoint_type == Segment.SEG_INITPOINT_NEWTRAJ:
+            elif segment.initpoint_type == segment.SEG_INITPOINT_NEWTRAJ:
                 initial_state_id = segment.initial_state_id
                 basis_state_id = self.initial_states[initial_state_id].basis_state_id
 
@@ -199,7 +198,7 @@ class OpenMMPropagator(WESTPropagator):
                 velocities[0] = state.getVelocities(asNumpy=True)
 
             # Run dynamics
-            for istep in xrange(1, self.nblocks):
+            for istep in range(1, self.nblocks):
                 integrator.step(self.steps_per_write)
 
                 state = context.getState(getPositions=True, getVelocities=True)
@@ -214,7 +213,7 @@ class OpenMMPropagator(WESTPropagator):
 
             # Finalize segment trajectory
             segment.pcoord = pcoords[...].astype(pcoord_dtype)
-            segment.status = Segment.SEG_STATUS_COMPLETE
+            segment.status = segment.SEG_STATUS_COMPLETE
 
             block_coordinates[si] = coordinates[-1]
             block_velocities[si] = velocities[-1]
