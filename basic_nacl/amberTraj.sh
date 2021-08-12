@@ -74,7 +74,7 @@ cd $dir
 
 # The first few lines of the output of w_trace are removed (including the 
 # initial state of the system, which doesn't have an iter:seg ID)
-cat $(echo 'traj_'$siter'_'$sseg'_trace.txt') | tail +9 > path.txt
+cat $(echo 'traj_'$siter'_'$sseg'_trace.txt') | tail -n +9 > path.txt
 
 
 # Now, the file listing all of the successful trajectory's historical iterations
