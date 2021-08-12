@@ -3,7 +3,8 @@
 import westpa
 from westpa.cli.core import w_init, w_run
 import westpa.work_managers as work_managers
-
+import os
+import shutil
 
 # We pass this in place of the args that would be returned by ArgParse, if this were invoked on command line.
 #   All this needs to be is an object w/ attributes corresponding to the command line arguments that w_init and w_run
@@ -14,7 +15,20 @@ class Params:
 
 
 if __name__ == "__main__":
-
+    
+    # Clean up from previous/ failed simulations.
+    for i in ['west.h5', 'seg_logs', 'traj_segs', 'istates']:
+        try:
+            os.remove(i)
+        except OSError:
+            try:
+                shutil.rmtree(i)
+            except OSError:
+                pass
+        
+    for i in ['seg_logs', 'traj_segs', 'istates']:
+        os.mkdir(i)
+    
     # Set some parameters that WESTPA needs to set simulation state.
     args = Params()
     args.rcfile = 'west.cfg'
