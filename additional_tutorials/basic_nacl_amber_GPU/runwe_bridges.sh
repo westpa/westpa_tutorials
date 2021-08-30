@@ -3,8 +3,8 @@
 #SBATCH --output=slurm.out
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=2
-#SBATCH --cluster=invest
-#SBATCH --partition=lchong
+#SBATCH --cluster=GPU
+#SBATCH --partition=gtx1080
 #SBATCH --gres=gpu:2
 #SBATCH --time=24:00:00
 
@@ -38,8 +38,10 @@ fi
 
 # start clients, with the proper number of cores on each
 
+scontrol show hostname $SLURM_NODELIST >& SLURM_NODELIST.log
+
 for node in $(scontrol show hostname $SLURM_NODELIST); do
-    ssh -o StrictHostKeyChecking=no $node $PWD/node.sh $SLURM_SUBMIT_DIR $SLURM_JOBID $node --work-manager=zmq --zmq-mode=client --zmq-read-host-info=$SERVER_INFO --zmq-comm-mode=tcp &
+    ssh -o StrictHostKeyChecking=no $node $PWD/node.sh $SLURM_SUBMIT_DIR $SLURM_JOBID $node $CUDA_VISIBLE_DEVICES --work-manager=zmq --n-workers=2 --zmq-mode=client --zmq-read-host-info=$SERVER_INFO --zmq-comm-mode=tcp &
 done
 
 
