@@ -19,7 +19,7 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
   ln -sv $WEST_PARENT_DATA_REF ./parent.rst
 fi
 
-$SANDER -O -i md.in   -p nacl.parm7  -c parent.rst \
+$PMEMD -O -i md.in   -p nacl.parm7  -c parent.rst \
            -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
 TEMP=$(mktemp)
