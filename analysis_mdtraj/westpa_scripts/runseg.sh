@@ -83,4 +83,4 @@ $WEST_SIM_ROOT/rmsd.py \
 cat rmsd.dat > $WEST_PCOORD_RETURN
 
 # Clean up
-rm -f $TEMP md.in parent.rst seg.nfo seg.pdb
+rm -f $TEMP md.in seg.nfo seg.pdb
