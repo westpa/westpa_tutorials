@@ -74,4 +74,4 @@ if [ ${WEST_LOG_RETURN} ]; then
 fi
 
 # Clean up
-rm -f dist.dat md.in nacl.prm parent.log parent.rst seg.nfo seg.pdb
+rm -f dist.dat md.in parent.log seg.nfo seg.pdb

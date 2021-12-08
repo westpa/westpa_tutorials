@@ -58,5 +58,5 @@ paste <(cat dihedral_p53.dat | tail -n +2 | awk {'print $26'}) <(cat dihedral_p5
 
 
 # Clean up
-rm -f $TEMP md.in parent.rst seg.nfo seg.pdb 
+rm -f $TEMP md.in seg.nfo seg.pdb 
 
