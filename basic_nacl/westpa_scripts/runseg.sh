@@ -27,4 +27,4 @@ python $WEST_SIM_ROOT/common_files/get_distance.py
 cat dist.dat > $WEST_PCOORD_RETURN
 
 # Clean up
-rm -f parent.xml bstate.pdb dist.dat nacl_prod.py
+rm -f dist.dat nacl_prod.py

@@ -31,4 +31,4 @@ cat dist.dat > $WEST_PCOORD_RETURN
 ##echo 3.184 > $WEST_COLOR_RETURN
 
 # Clean up
-#KFW rm -f parent.xml bstate.pdb dist.dat nacl_prod.py
+rm -f dist.dat nacl_prod.py
