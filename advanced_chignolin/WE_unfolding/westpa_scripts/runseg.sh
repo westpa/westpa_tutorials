@@ -36,4 +36,4 @@ cat $TEMP | tail -n +2 | awk '{print $2}' > $WEST_PCOORD_RETURN
 cat $TEMP>pcoord.dat
 
 # Clean up
-rm -f $TEMP md.in parent.rst seg.nfo seg.pdb chignolin.prmtop
+rm -f $TEMP md.in seg.nfo seg.pdb

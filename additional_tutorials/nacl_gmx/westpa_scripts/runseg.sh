@@ -84,5 +84,5 @@ echo -e "2\n1\n" | $GMX trjconv -f seg.trr -s seg.tpr -o seg.pdb -center
 cat seg.pdb | grep 'ATOM' | awk '{print $6, $7, $8}' > $WEST_COORD_RETURN
 
 # Clean up all the files that we don't need to save.
-rm -f dist.xvg md.mdp md_out.mdp nacl.top parent.gro parent.trr seg.cpt \
+rm -f dist.xvg md.mdp md_out.mdp nacl.top  parent.trr seg.cpt \
       seg.pdb seg.tpr tip3p_ionsjc2008.ff parent.edr
