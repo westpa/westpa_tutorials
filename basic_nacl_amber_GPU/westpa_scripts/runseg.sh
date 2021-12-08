@@ -19,7 +19,14 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
   ln -sv $WEST_PARENT_DATA_REF ./parent.rst
 fi
 
-$SANDER -O -i md.in   -p nacl.parm7  -c parent.rst \
+export CUDA_DEVICES=(`echo $CUDA_VISIBLE_DEVICES_ALLOCATED | tr , ' '`)
+export CUDA_VISIBLE_DEVICES=${CUDA_DEVICES[$WM_PROCESS_INDEX]}
+
+echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES_ALLOCATED = " $CUDA_VISIBLE_DEVICES_ALLOCATED
+echo "RUNSEG.SH: WM_PROCESS_INDEX = " $WM_PROCESS_INDEX
+echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES = " $CUDA_VISIBLE_DEVICES
+
+$PMEMD -O -i md.in   -p nacl.parm7  -c parent.rst \
            -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
 TEMP=$(mktemp)
