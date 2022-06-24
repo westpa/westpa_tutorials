@@ -17,6 +17,6 @@
   ntxo      = 2,
   ntwr      = 2500,
   ioutfm    = 1,
-  ntwx      = 20,
+  ntwx      = 500,
   iwrap     = 0,
 &end
