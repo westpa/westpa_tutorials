@@ -34,8 +34,10 @@ def calc_pcoord(refpath, toppath, mobpath, FORM):
 
     # Load the reference crystal and the trajectory
     # Use the load_netcdf() function so MDtraj knows it is a netcdf file.
-    crystal = md.load_netcdf(refpath, top=toppath)
+    crystal = md.load(refpath, top=toppath)
     traj = md.load_netcdf(mobpath, top=toppath)
+    if FORM != "RESTRT":
+        parent = md.load("parent.restrt", top=toppath)
 
     # Get a list of CA indices from the topology file.
     CA_indices = crystal.topology.select("name == CA")
@@ -49,16 +51,21 @@ def calc_pcoord(refpath, toppath, mobpath, FORM):
     # MDTraj.rmsd(target, reference, frame=0) which returns a numpy array
     rmsd = md.rmsd(traj, crystal, atom_indices=CA_indices)
 
+    if FORM != "RESTRT":
+        rmsd2 = md.rmsd(parent, crystal, atom_indices=CA_indices)
+
+    rmsd3 = numpy.concatenate((rmsd, rmsd2), axis=0)
+
     # Write RMSD to output file.
     if FORM == "RESTRT":
-	    # We only need the last value in the array.
-	    rmsd = numpy.array(rmsd[-1])
-	    # WESTPA expects a 1x1 array, so we must correct the shape if needed.
+        # We only need the last value in the array.
+        rmsd = numpy.array(rmsd[-1])
+        # WESTPA expects a 1x1 array, so we must correct the shape if needed.
         if rmsd.ndim == 0:
-	    rmsd.shape = (1,)
+            rmsd.shape = (1,)
         numpy.savetxt("rmsd.dat", rmsd)
     else:
-        numpy.savetxt("rmsd.dat", rmsd)
+        numpy.savetxt("rmsd.dat", rmsd3)
 
 def main():
     # Get arguments from the caller and pass to calc_pcoord().
