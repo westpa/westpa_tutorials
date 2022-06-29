@@ -76,7 +76,7 @@ pmemd -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
 #   for: we are evaluating a trajectory segment, so for = 'NCDF'
 $WEST_SIM_ROOT/rmsd.py \
     --ref $WEST_SIM_ROOT/bstates/P53.MDM2.rst \
-    --top $WEST_SIM_ROOT/amber_config/P53.MDM2.prmtop \
+    --top $WEST_SIM_ROOT/common_files/P53.MDM2.prmtop \
     --mob $WEST_CURRENT_SEG_DATA_REF/seg.nc \
     --for NCDF \
 

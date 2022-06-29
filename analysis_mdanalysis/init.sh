@@ -22,7 +22,7 @@ mkdir   seg_logs traj_segs istates job_logs
 # command line and pass them along to w_init.
 BSTATE_ARGS="--bstates-from bstates/bstates.txt"
 
-$WEST_ROOT/bin/w_init \
+w_init \
   $BSTATE_ARGS \
   --segs-per-state 5 \
   --work-manager=threads "$@"

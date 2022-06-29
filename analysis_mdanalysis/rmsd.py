@@ -40,20 +40,33 @@ def calc_pcoord(refpath, toppath, mobpath, FORM):
     # also be specified using the optional "format" argument.
     init_u = mda.Universe(toppath, refpath, format="RESTRT")
     seg_u = mda.Universe(toppath, mobpath, format=str(FORM))
+    if FORM == "NCDF":
+        par_u = mda.Universe(toppath, "parent.rst", format="RESTRT")
+    print(par_u)
 
     # Create c-alpha AtomGroups.
     init_cAlpha = init_u.select_atoms("name CA")
     seg_cAlpha = seg_u.select_atoms("name CA")
+    if FORM == "NCDF":
+        par_cAlpha = par_u.select_atoms("name CA")
 
     # Calculate RMSD (relative to initial structure) at each time step.
     R = RMSD(seg_cAlpha, init_cAlpha, select = 'name CA', center=True, superposition=True)
     R.run()
+    if FORM == "NCDF":
+        R2 = RMSD(par_cAlpha, init_cAlpha, select = 'name CA', center=True, superposition=True)
+        R2.run()
+
+    if FORM == "NCDF":
+        R2 = numpy.array([R2.rmsd[0,2]])
+        print(R2)
+        R3 = numpy.concatenate((R.rmsd[:,2], R2), axis=0)
 
     # Write RMSD to output file.
     if FORM == "RESTRT":
         numpy.savetxt("rmsd.dat", R.rmsd[:,2])
     else:
-        numpy.savetxt("rmsd.dat", R.rmsd[:,2])
+        numpy.savetxt("rmsd.dat", R3)
 
 def main():
     # Get arguments from the caller and pass to calc_pcoord().

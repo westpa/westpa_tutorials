@@ -67,6 +67,8 @@ fi
 pmemd -O -i md.in   -p P53.MDM2.prmtop  -c parent.rst \
           -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
+mv parent.rst parent.restrt
+
 # Set the arguments for rmsd.py and call the script to calculate progress
 # coordinate(s) for the current trajectory segment.
 # Arguments:
