@@ -5,4 +5,4 @@ export WEST_SIM_ROOT="$PWD"
 export SIM_NAME=$(basename $WEST_SIM_ROOT)
 
 # Set runtime commands
-export NAMD=$(which namd2)
+export NAMD=/home/atb43/apps/NAMD/namd2

@@ -75,7 +75,7 @@ $NAMD md.conf > seg.log
 # Note that the script also loads the parent segment's .dcd file, in order to 
 # include the current segment's starting configuration (which is the same as the
 # parent segment's final configuration) in the calculation.
-python $WEST_SIM_ROOT/westpa_scripts/calculatedistance.py > $WEST_PCOORD_RETURN
+python $WEST_SIM_ROOT/common_files/calculatedistance.py > $WEST_PCOORD_RETURN
 
 # Output coordinates. We use a custom python script that converts to the dcd 
 # file to a multi-frame pdb (named seg.pdb)

@@ -11,7 +11,7 @@ import MDAnalysis
 import MDAnalysis.analysis.distances
 
 # Load the trajectory.
-universe = MDAnalysis.Universe('./common_files/nacl.psf', 'seg.dcd')
+universe = MDAnalysis.Universe('./common_files/nacl.psf', './bstates/unbound/seg.dcd')
 
 # Calculate the distance between the ions for each timepoint of the trajectory
 nacl = universe.select_atoms('resname SOD or resname CLA')
