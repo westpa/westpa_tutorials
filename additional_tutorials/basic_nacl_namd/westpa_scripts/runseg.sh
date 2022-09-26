@@ -82,13 +82,12 @@ python $WEST_SIM_ROOT/common_files/calculatedistance.py > $WEST_PCOORD_RETURN
 if [ ${WEST_COORD_RETURN} ]; then
   python $WEST_SIM_ROOT/common_files/dcd2pdb.py 
   cat seg.pdb \
-    | tail -n+5 \
     | grep 'ATOM' \
     | awk '{print $6, $7, $8}' > $WEST_COORD_RETURN
 fi
 
 # Clean up
-rm -f md.conf seg.pdb \
-  seg.restart.coord seg.restart.coor.old seg.restart.vel seg.restart.vel.old\
-  seg.restart.xsc seg.restart.xsc.old structure.pdb structure.psf toppar
+#rm -f md.conf seg.pdb \
+#  seg.restart.coord seg.restart.coor.old seg.restart.vel seg.restart.vel.old\
+#  seg.restart.xsc seg.restart.xsc.old structure.pdb structure.psf toppar
 

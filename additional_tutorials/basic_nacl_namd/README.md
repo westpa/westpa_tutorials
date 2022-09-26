@@ -3,7 +3,9 @@ This turorial is meant to introduce new users to the WESTPA software for running
 
 ## Tutorial files
 
-All files necessary for completing the tutorial can be found in this directory.
+All files necessary for completing the tutorial can be found in this directory, except the CHARMM36 Toppar Files. Users should
+download the latest and untar them within common\_files/. Users will also have to install MDAnalysis for progress coordinate
+calculation.
 
 ## Full tutorial 
 
