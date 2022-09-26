@@ -4,12 +4,12 @@ This turorial is meant to introduce new users to the WESTPA software for running
 ## Tutorial files
 
 All files necessary for completing the tutorial can be found in this directory, except the CHARMM36 Toppar Files. Users should
-download the latest and untar them within common\_files/. Users will also have to install MDAnalysis for progress coordinate
-calculation.
+download the latest version and untar them within common\_files/toppar/. Users will also have to install MDAnalysis for 
+progress coordinate calculation.
 
 ## Full tutorial 
 
-Find the full tutorial in the LiveComs journal article on best practices for Weighted Ensemble simulations. (Link to be added)
+Find the full tutorial in the [LiveCoMS journal article](https://www.livecomsjournal.org/article/10607-a-suite-of-tutorials-for-the-westpa-rare-events-sampling-software-article-v1-0) on best practices for Weighted Ensemble simulations.
 
 ## Authors
 
