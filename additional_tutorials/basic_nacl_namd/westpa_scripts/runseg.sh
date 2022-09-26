@@ -36,9 +36,9 @@ cd $WEST_CURRENT_SEG_DATA_REF
 
 # Make symbolic links to the topology file and parameter files. These are not 
 # unique to each segment.
-ln -sv $WEST_SIM_ROOT/namd_config/nacl.psf structure.psf
-ln -sv $WEST_SIM_ROOT/namd_config/nacl.pdb structure.pdb 
-ln -sv $WEST_SIM_ROOT/namd_config/toppar .
+ln -sv $WEST_SIM_ROOT/common_files/nacl.psf structure.psf
+ln -sv $WEST_SIM_ROOT/common_files/nacl.pdb structure.pdb 
+ln -sv $WEST_SIM_ROOT/common_files/toppar .
 
 # Either continue an existing tractory, or start a new trajectory. Here, both
 # cases are the same.  If you need to handle the cases separately, you can
@@ -51,7 +51,7 @@ ln -sv $WEST_SIM_ROOT/namd_config/toppar .
 # We'll use the "sed" command to replace the string "RAND" with a randomly
 # generated seed.
 sed "s/RAND/$WEST_RAND16/g" \
-  $WEST_SIM_ROOT/namd_config/md.conf > md.conf
+  $WEST_SIM_ROOT/common_files/md.conf > md.conf
 
 # This trajectory segment will start off where its parent segment left off.
 # The "ln" command makes symbolic links to the parent segment's edr, gro, and 
@@ -75,14 +75,13 @@ $NAMD md.conf > seg.log
 # Note that the script also loads the parent segment's .dcd file, in order to 
 # include the current segment's starting configuration (which is the same as the
 # parent segment's final configuration) in the calculation.
-python $WEST_SIM_ROOT/westpa_scripts/calculatedistance.py > $WEST_PCOORD_RETURN
+python $WEST_SIM_ROOT/common_files/calculatedistance.py > $WEST_PCOORD_RETURN
 
 # Output coordinates. We use a custom python script that converts to the dcd 
 # file to a multi-frame pdb (named seg.pdb)
 if [ ${WEST_COORD_RETURN} ]; then
-  python $WEST_SIM_ROOT/westpa_scripts/dcd2pdb.py 
+  python $WEST_SIM_ROOT/common_files/dcd2pdb.py 
   cat seg.pdb \
-    | tail -n+5 \
     | grep 'ATOM' \
     | awk '{print $6, $7, $8}' > $WEST_COORD_RETURN
 fi
@@ -90,5 +89,5 @@ fi
 # Clean up
 rm -f md.conf seg.pdb \
   seg.restart.coord seg.restart.coor.old seg.restart.vel seg.restart.vel.old\
-  seg.restart.xsc seg.restart.xsc.old structure.pdb structure.psf toppar
+  seg.restart.xsc seg.restart.xsc.old structure.psf toppar
 
