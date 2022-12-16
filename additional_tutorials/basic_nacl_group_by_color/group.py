@@ -61,4 +61,32 @@ def walkers_by_color(we_driver, ibin, states, **kwargs):
             groups[segment.data['color']] = set([segment])
     return groups.values()
 
+    
+def color_data_loader(fieldname, data_filename, segment, single_point):
+    '''Groups walkers inside of a bin according to a user defined state definition.
+    Must be n-dimensional.
 
+    Creates a group, which takes the same data format as a bin, and then passes into the
+    normal split/merge functions.'''
+    # Pass in the bin object instead of the index
+    # Generate a dictionary which contains bin indices for the states.
+    we_driver = westpa.rc.get_we_driver()
+    states = we_driver.subgroup_function_kwargs['states']
+    system = westpa.rc.get_system_driver()
+    states_ibin = {}
+    for i in states.keys():
+        for pcoord in states[i]:
+            try:
+                states_ibin[i].append(system.bin_mapper.assign([pcoord])[0])
+            except:
+                states_ibin[i] = []
+                states_ibin[i].append(system.bin_mapper.assign([pcoord])[0])
+    for state in states_ibin:
+        states_ibin[state] = list(set(states_ibin[state]))
+    color = system.bin_mapper.assign([segment.pcoord[0,:]])[0]
+    
+    for i in states_ibin.keys():
+        if color in set(states_ibin[i]):
+            segment.data['color'] = np.float64(i)
+        else:
+            segment.data['color'] = -1
