@@ -83,7 +83,7 @@ if [ ${WEST_COORD_RETURN} ]; then
   python $WEST_SIM_ROOT/common_files/dcd2pdb.py 
   cat seg.pdb \
     | grep 'ATOM' \
-    | awk '{print $6, $7, $8}' > $WEST_COORD_RETURN
+    | awk '{print $7, $8, $9}' > $WEST_COORD_RETURN
 fi
 
 # Clean up
