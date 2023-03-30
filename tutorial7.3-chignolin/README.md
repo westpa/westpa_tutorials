@@ -1,4 +1,4 @@
-# Tutorial 7.2: Intermediate WESTPA tutorial (p53 conformational sampling)
+# Tutorial 7.3: Intermediate WESTPA tutorial (Chignolin Folding/Unfolding)
 This tutorial is meant to introduce WESTPA users to some more advanced topics regarding simulation setup.
 
 ## Tutorial files
@@ -12,4 +12,3 @@ Find the full tutorial in the LiveComs journal article on best practices for Wei
 ## Authors
 
 * **Anthony Bogetti** - *Primary work* - [atbogetti](https://github.com/atbogetti)
-* **Paul Torrillo** - *Preliminary work* - [DrAuxin](https://github.com/DrAuxin)

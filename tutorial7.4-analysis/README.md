@@ -1,5 +1,5 @@
-# Tutorial 7.2: Intermediate WESTPA tutorial (p53 conformational sampling)
-This tutorial is meant to introduce WESTPA users to some more advanced topics regarding simulation setup.
+# Tutorial 7.4: Analysis tutorial
+This tutorial is meant to introduce new users to analyzing Weighted Ensemble (WE) simulations.
 
 ## Tutorial files
 
@@ -12,4 +12,3 @@ Find the full tutorial in the LiveComs journal article on best practices for Wei
 ## Authors
 
 * **Anthony Bogetti** - *Primary work* - [atbogetti](https://github.com/atbogetti)
-* **Paul Torrillo** - *Preliminary work* - [DrAuxin](https://github.com/DrAuxin)
