@@ -15,9 +15,7 @@
 module purge
 module load intel/2017.1.132 amber/16
 module unload python
-export WEST_PYTHON=($which python2.7)
 source env.sh
 
 rm -f west.log
-$WEST_ROOT/bin/w_run --work-manager processes "$@" &> west.log
-${SLURM_JOB_ID}
+w_run --work-manager processes "$@" &> west-${SLURM_JOB_ID}.log
