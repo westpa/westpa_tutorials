@@ -8,4 +8,4 @@ export WEST_SIM_ROOT="$PWD"
 export SIM_NAME=$(basename $WEST_SIM_ROOT)
 
 # Set runtime commands
-export GMX=$(which gmx_mpi)
+export GMX=$(which gmx)
