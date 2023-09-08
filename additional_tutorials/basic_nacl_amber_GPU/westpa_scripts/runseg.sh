@@ -19,6 +19,8 @@ elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
   ln -sv $WEST_PARENT_DATA_REF ./parent.rst
 fi
 
+# Here we distribute the GPUs based on the variable $WM_PROCESS_INDEX, which is the ID of each process given by the work manager
+# By default, $CUDA_VISIBLE_DEVICES should lists all of the available GPUs on this node.
 export CUDA_DEVICES=(`echo $CUDA_VISIBLE_DEVICES_ALLOCATED | tr , ' '`)
 export CUDA_VISIBLE_DEVICES=${CUDA_DEVICES[$WM_PROCESS_INDEX]}
 

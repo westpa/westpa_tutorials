@@ -28,7 +28,6 @@ echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES_ALLOCATED = " $CUDA_DEVICES
 echo "RUNSEG.SH: WM_PROCESS_INDEX = " $WM_PROCESS_INDEX
 echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES = " $CUDA_VISIBLE_DEVICES
 
-
 # Note: This NaCl test system is too small to run on GPUs. Remove the -AllowSmallBox flag for regular systems with enough atoms!
 $PMEMD -O -AllowSmallBox -i md.in   -p nacl.parm7  -c parent.rst \
            -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
