@@ -21,14 +21,15 @@ fi
 
 # Here we distribute the GPUs based on the variable $WM_PROCESS_INDEX, which is the ID of each process given by the work manager
 # By default, $CUDA_VISIBLE_DEVICES should lists all of the available GPUs on this node.
-export CUDA_DEVICES=(`echo $CUDA_VISIBLE_DEVICES_ALLOCATED | tr , ' '`)
+export CUDA_DEVICES=(`echo $CUDA_VISIBLE_DEVICES | tr , ' '`)
 export CUDA_VISIBLE_DEVICES=${CUDA_DEVICES[$WM_PROCESS_INDEX]}
 
-echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES_ALLOCATED = " $CUDA_VISIBLE_DEVICES_ALLOCATED
+echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES_ALLOCATED = " $CUDA_DEVICES
 echo "RUNSEG.SH: WM_PROCESS_INDEX = " $WM_PROCESS_INDEX
 echo "RUNSEG.SH: CUDA_VISIBLE_DEVICES = " $CUDA_VISIBLE_DEVICES
 
-$PMEMD -O -i md.in   -p nacl.parm7  -c parent.rst \
+# Note: This NaCl test system is too small to run on GPUs. Remove the -AllowSmallBox flag for regular systems with enough atoms!
+$PMEMD -O -AllowSmallBox -i md.in   -p nacl.parm7  -c parent.rst \
            -r seg.rst -x seg.nc      -o seg.log    -inf seg.nfo
 
 TEMP=$(mktemp)
