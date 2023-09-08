@@ -16,4 +16,4 @@ env | sort
 
 cd $WEST_SIM_ROOT
 
-w_run --work-manager=processes --n-workers= 4 "$@" &> west-$SLURM_JOBID.log
+w_run --work-manager=processes --n-workers=4 "$@" &> west-$SLURM_JOBID.log
